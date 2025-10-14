@@ -1,7 +1,7 @@
 numero = int (input ("Introduce un numero: "))
 
-for i in range(5):
-    if i == 0 or i == 4:
-        print("*###*")
+for i in range(numero):
+    if i == 1 or i == numero:
+        print ("*","#"*(numero-2)+"*")
     else:
-        print("****")
+        print ("*","*"*(numero-3)+"*")
