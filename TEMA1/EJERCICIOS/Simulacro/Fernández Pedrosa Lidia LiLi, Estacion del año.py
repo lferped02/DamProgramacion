@@ -1,7 +1,7 @@
 dia = int (input ("Introduce un día: "))
 mes = int (input ("Introduce un mes: "))
 
-if dia > 31 and mes > 12:
+while (dia > 31 and mes > 12):
     print("Fin del programa.")
     exit()
 
