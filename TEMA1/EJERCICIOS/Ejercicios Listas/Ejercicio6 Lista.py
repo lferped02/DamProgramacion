@@ -6,11 +6,16 @@ for i in range(10):
     numero.append(numeros)
 
 # Encontrar el maximo y el minimo
-maximo = max(numero)
-minimo = min(numero)
+maximo = numero [0]
+minimo = numero [0]
 
-# Mostrar los números con etiquetas
+for numeros in numero:
+    if numeros>maximo:
+        maximo = numeros
+    elif numeros<minimo:
+        minimo = numeros
 print ("Numeros introducidos: ")
+
 for numeros in numero:
     if numeros == maximo:
         print (numeros, "-> máximo")

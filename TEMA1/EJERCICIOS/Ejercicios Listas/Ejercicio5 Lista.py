@@ -6,12 +6,13 @@ cubos = []
 
 # Llenar las listas
 for i in range(20):
-    n = random.randint(0, 100)
-    numeros.append(n)
-    cuadrados.append(n * n)
-    cubos.append(n * n * n)
+    numero = random.randint(0, 100)
+    numeros.append(numero)
+    cuadrados.append(numero * numero)
+    cubos.append(numero * numero * numero)
+print ("Numero", numeros[i])
+print ("Cuadrado", cuadrados[i])
+print ("Cubo", cubos[i])  
 
-# Mostrar los resultados
-print("Número  Cuadrado  Cubo")
-for i in range(20):
-    print(numeros[i], "   ", cuadrados[i], "   ", cubos[i])
+#for i in range(20):
+    #print(numeros[i], " ", cuadrados[i], " ", cubos[i])
