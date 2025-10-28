@@ -18,7 +18,7 @@ print ("Numeros introducidos: ")
 
 for numeros in numero:
     if numeros == maximo:
-        print (numeros, "-> máximo")
+        print (numeros, "→ máximo")
     elif numeros == minimo:
         print(numeros, "→ mínimo")
     else:
