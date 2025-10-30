@@ -1,2 +1,2 @@
-cadena = input("escribe un numero")
+cadena = input("Escribe un numero: ")
 print(len(cadena))
