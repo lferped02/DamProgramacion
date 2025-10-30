@@ -1,7 +1,8 @@
-numero = input("Introduce un numero: ")
+numero = input("Introduce un número: ")
 numeroVoltea = ""
 
-for i in range(len(numero) -1- -1, -1):
-    numeroVoltea += numero [i]
+# Recorremos el número desde el último carácter hasta el primero
+for i in range(len(numero) - 1, -1, -1):
+    numeroVoltea += numero[i]
 
-    print(f"numero volteado es {numeroVoltea}:")
+print(f"El número volteado es: {numeroVoltea}")
