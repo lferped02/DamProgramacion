@@ -1,6 +1,6 @@
 numero = "1234567"
-numEntero = "9"
-posicion = numero.find(numEntero)
+numeroEntero = "5"
+posicion = numero.find(numeroEntero)
 
 if posicion != -1:
     print("El número se encuentra en la posición:", posicion)
