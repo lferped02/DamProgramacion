@@ -3,13 +3,14 @@ clientes = []
 opcion = ""
 while opcion != "G":
     # Mostrar menú
+    print("===========================================================")
     print("Menú principal:")
     print("A) Añadir cliente")
     print("V) Validar emails almacenados")
     print("C) Contar clientes de un dominio")
     print("M) Mostrar los % de clientes premium y normales")
     print("G) Salir")
-
+    print("===========================================================")
     opcion = input("Selecciona una opción: ").strip().upper()
 
     #Opcion A: Al añadir un cliente:
