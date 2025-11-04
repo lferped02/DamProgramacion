@@ -4,7 +4,7 @@ opcion = ""
 while opcion != "G":
     # Mostrar menú
     print("===========================================================")
-    print("Menú principal:")
+    print("Selecciona una de las siguientes opciones (A, V, C, M, G): ")
     print("A) Añadir cliente")
     print("V) Validar emails almacenados")
     print("C) Contar clientes de un dominio")
