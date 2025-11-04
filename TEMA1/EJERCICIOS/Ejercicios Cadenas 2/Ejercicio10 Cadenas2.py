@@ -1,13 +1,19 @@
 numero = input("Escribe un número entero: ")
-if numero.isdigit():
+esValido = True
+for caracter in numero:
+    if caracter < "0" or caracter > "9":
+        esValido = False
+if esValido:
     resultado = ""
     contador = 0
-
-    for digito in reversed(numero):
-        if contador and contador % 3 == 0:
+    indice = len(numero) - 1
+    while indice >= 0:
+        digito = numero[indice]
+        if contador != 0 and contador % 3 == 0:
             resultado = "." + resultado
         resultado = digito + resultado
         contador += 1
-    print(f"Número con puntos {resultado}:")
+        indice -= 1
+    print(f"Número con puntos {resultado}")
 else:
     print("Solo se permiten números enteros positivos.")
