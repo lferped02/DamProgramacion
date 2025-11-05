@@ -11,31 +11,30 @@ while opcion != "G":
     print("M) Mostrar los % de clientes premium y normales")
     print("G) Salir")
     print("===========================================================")
-    opcion = input("Selecciona una opción: ").strip().upper()
+    opcion = input("Selecciona una opción: ").upper()
 
     #Opcion A: Al añadir un cliente:
     if opcion == "A":
         tipoValido = False
         while not tipoValido:
-            tipo = input("¿Es cliente premium? (S/N): ").strip().upper()
+            tipo = input("¿Es cliente premium? (S/N): ").upper()
             if tipo == "S" or tipo == "N":
                 tipoValido = True
             else:
                 print("Entrada no válida. Introduce 'S' o 'N'")
-        email = input("Introduce el correo electrónico del cliente: ").strip()
+        email = input("Introduce el correo electrónico del cliente: ")
         cliente = tipo + "|" + email
         clientes.append(cliente)
 
-    
     #Apartado 2. Opcion V: Validar emails almacenados:
     elif opcion == "V":
         print("Validación de emails: ")
         for cliente in clientes:
-            partes = cliente.split("|")
+            partes = cliente("|")
             email = partes[1]
         # Validación alternativa usando split
         if "@" in email and "." in email:
-            secciones = email.split("@")
+            secciones = email("@")
             if len(secciones) == 2 and secciones[0] != "" and "." in secciones[1]:
                 print(email + " → VÁLIDO")
             else:
@@ -45,12 +44,13 @@ while opcion != "G":
 
     #Apartado 3. Opcion C: Contar clientes de dominio:
     elif opcion == "C":
-        dominio = input("Introduce el dominio a buscar: ").strip()
+        clientes = ["juan@gmail.com", "juan2@gmail.com", "juan3@hotmail.com"]
+        dominio = input("Introduce el dominio a buscar: ")
         contador = 0
         for cliente in clientes:
-            email = cliente.split("|")[1]
-            partes = email.split("@")
-            if len(partes) == 2 and partes[1] == dominio:
+            
+            partes = cliente.split("@")
+            if len(partes) == 2 and partes[1].find(dominio)>-1:
                 contador +=1
         print("Número de clientes con dominio '" + dominio + "':", contador)
 
@@ -62,7 +62,7 @@ while opcion != "G":
         else:
             premium = 0
             for cliente in clientes:
-                tipo = cliente.split("|")[0]
+                tipo = cliente ("|")[0]
                 if tipo == "S":
                     premium +=1
             normales = total-premium
