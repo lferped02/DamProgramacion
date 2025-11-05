@@ -15,14 +15,17 @@ while opcion != "G":
 
     #Opcion A: Al añadir un cliente:
     if opcion == "A":
-        tipo = ""
-        while tipo not in ["S", "N"]:
+        tipoValido = False
+        while not tipoValido:
             tipo = input("¿Es cliente premium? (S/N): ").strip().upper()
-            if tipo not in ["S", "N"]:
+            if tipo == "S" or tipo == "N":
+                tipoValido = True
+            else:
                 print("Entrada no válida. Introduce 'S' o 'N'")
         email = input("Introduce el correo electrónico del cliente: ").strip()
         cliente = tipo + "|" + email
         clientes.append(cliente)
+
     
     #Apartado 2. Opcion V: Validar emails almacenados:
     elif opcion == "V":
