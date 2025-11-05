@@ -1,30 +1,29 @@
-def calcularMax (num_lista):
-    min - num_lista [0]
+def calcularMaximo(lista):
+    maximo = lista[0]
+    for numero in lista:
+        if numero > maximo:
+            maximo = numero
+    return maximo
 
-    for l in range (len (num_lista)):
-        if num_lista [l] < max:
-            max = num_lista [l]
-    
-    return max
+def calcularMinimo(lista):
+    minimo = lista[0]
+    for numero in lista:
+        if numero < minimo:
+            minimo = numero
+    return minimo
 
-def calcularMin (num_lista):
-    min - num_lista [0]
+def calcularMaximoMinimo(lista):
+    maximo = calcularMaximo(lista)
+    minimo = calcularMinimo(lista)
+    return maximo, minimo
 
-    for l in range (len (num_lista)):
-        if num_lista [l] < min:
-            min = num_lista [l]
-    
-    return min
+# Entrada de datos
+numeros = []
+while len(numeros) < 10:
+    numero = int(input(f"Introduce el número {len(numeros)+1}: "))
+    numeros.append(numero)
 
-def calcularMaxMin (MinMax_lista):
-    Max_calcular = calcularMax (MinMax_lista)
-    Min_calcular = calcularMin (MinMax_lista)
-
-    return [Max_calcular, Min_calcular]
-
-nueva_lista = []
-while len (nueva_lista) <=10:
-    nuevo_numero = int (input ("dame un numero:"))
-    nueva_lista.append (nuevo_numero)
-
-print (calcularMaxMin (nueva_lista))
+# Cálculo y salida
+maximo, minimo = calcularMaximoMinimo(numeros)
+print(f"El número máximo es: {maximo}")
+print(f"El número mínimo es: {minimo}")

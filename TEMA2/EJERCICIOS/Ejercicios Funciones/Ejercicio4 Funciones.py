@@ -1,13 +1,18 @@
-def calcularMax (num_lista):
-    max = -9999999999
-    for l in range (len (num_lista)-1):
-        if num_lista [l] > max:
-            max = num_lista [l]
-    return max
+def calcularMaximo(lista):
+    maxima = lista[0]  # Usamos el primer valor como referencia inicial
+    for numero in lista:
+        if numero > maxima:
+            maxima = numero
+    return maxima
 
+# Entrada de datos
 lista = []
-while len (lista) <=10:
-    num = int (input("dame numeros"))
-    lista.append (num)
+while len(lista) < 10:
+    try:
+        numero = int(input(f"Introduce el número {len(lista)+1}: "))
+        lista.append(numero)
+    except ValueError:
+        print("Por favor, introduce un número válido.")
 
-print (calcularMax (lista))
+# Salida
+print("El número máximo es:", calcularMaximo(lista))

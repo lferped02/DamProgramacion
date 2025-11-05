@@ -1,12 +1,12 @@
-tiempo_segundo = ""
-def convertirsegundo (segundos):
-    horas = int (segundos / 3600)
+def convertirSegundos(segundos):
+    horas = int(segundos / 3600)
     minutos = int((segundos % 3600) / 60)
-    segundos_restantes = segundos % 60
-    return horas, minutos, segundos_restantes
+    segundosRestantes = segundos % 60
+    return horas, minutos, segundosRestantes
 
-segundos = int (input ("dame el tiempo en segundos:"))
-resultado = convertirsegundo (segundos)
-print ("horas.", resultado [0])
-print ("minutos", resultado [1])
-print ("segundo_restantes", resultado [2])
+segundos = int(input("Introduce el tiempo en segundos: "))
+horas, minutos, segundosRestantes = convertirSegundos(segundos)
+
+print("Horas:", horas)
+print("Minutos:", minutos)
+print("Segundos restantes:", segundosRestantes)

@@ -1,11 +1,11 @@
-def temperatura (num, num2):
-    media = (num + num2)/2
+def temperatura(maxima, minima):
+    media = (maxima + minima) / 2
     return media
 
-dia = input ("introduce numero de dia:")
-for i in range (0, dia):
-    temperatura_maxima = input ("dame la temperatura maxima del dia:")
-    temperatura_minima = input ("dame la temperatura minima del dia:")
-    resultadofuncion= temperatura (temperatura_maxima, temperatura_minima)
+dia = int(input("Introduce número de días: "))
 
-print (resultadofuncion)
+for i in range(dia):
+    temperaturaMaxima = float(input(f"Introduce la temperatura máxima del día {i+1}: "))
+    temperaturaMinima = float(input(f"Introduce la temperatura mínima del día {i+1}: "))
+    resultadoFuncion = temperatura(temperaturaMaxima, temperaturaMinima)
+    print(f"Media del día {i+1}: {resultadoFuncion:.2f}°C")

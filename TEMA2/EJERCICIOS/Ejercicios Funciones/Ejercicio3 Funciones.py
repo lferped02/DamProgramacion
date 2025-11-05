@@ -1,8 +1,8 @@
-def convertirespaciado (cadena):
-    cadenaresultado = ""
+def convertir_espaciado(cadena):
+    cadenaResultado = ""
     for c in cadena:
         if c != '':
-            cadenaresultado = cadenaresultado +c+ ""
-    return cadenaresultado
+            cadenaResultado += c + " "
+    return cadenaResultado.strip()  # Elimina el espacio final
 
-print (convertirespaciado ("Hola, tú"))
+print(convertir_espaciado("Hola, tú"))

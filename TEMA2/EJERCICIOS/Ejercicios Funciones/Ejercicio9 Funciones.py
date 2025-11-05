@@ -1,29 +1,23 @@
-def convertisegundoahora (segundos):
-    horas = int(segundos / 3600)
-    return horas
+def convertirSegundosAHoras(segundos):
+    return int(segundos / 3600)
 
-def convertirsegundoaminutos (segundos):
-    minutos = int (segundos/60)
-    return minutos
+def convertirSegundosAMinutos(segundos):
+    return int(segundos / 60)
 
-segundos = int (input ("dame el tiempo en segundos:"))
-horas = int (segundos / 3600)
+menu = int(input("Menú:\n1. Mostrar segundos\n2. Convertir a minutos\n3. Convertir a horas\n4. Salir\nElige una opción: "))
 
-menu = int (input ("introduce una opcion del menu:"))
-while menu != 4 :
-    segundos = int (input ("introuce el tiempo en segundo:"))
+while menu != 4:
+    segundos = int(input("Introduce el tiempo en segundos: "))
 
-    resultado = convertisegundoahora (segundos), convertirsegundoaminutos (segundos)
     if menu == 1:
-     print (segundos, "segundos")
-
-    elif menu ==2:
-     print (convertirsegundoaminutos (segundos), "minutos")
-    
+        print(segundos, "segundos")
+    elif menu == 2:
+        print(convertirSegundosAMinutos(segundos), "minutos")
     elif menu == 3:
-       print (convertisegundoahora (segundos), "horas")
-    
-    elif menu == 4:
-       print ("saliendo del programa")
+        print(convertirSegundosAHoras(segundos), "horas")
+    else:
+        print("Opción no válida")
 
-    menu = int (input ("introduce una opcion del menu:"))
+    menu = int(input("\nMenú:\n1. Mostrar segundos\n2. Convertir a minutos\n3. Convertir a horas\n4. Salir\nElige una opción: "))
+
+print("Saliendo del programa...")
