@@ -1,7 +1,7 @@
 #Definición función compruebaSiPar recibe el numero y devuelve un booleano (True o False)
 def compruebaSiPar(numero):
     return numero %2==0
-
+#Comprueba si el multiplo es par
 numero = int(input("Introduce un numero: "))
 esPar = compruebaSiPar(numero)
 print(numero, esPar)
