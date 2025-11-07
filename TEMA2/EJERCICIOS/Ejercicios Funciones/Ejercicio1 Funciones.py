@@ -3,11 +3,9 @@ def esMultiplo(numero1, numero2):
         return "No se puede dividir entre cero."
     return numero1 % numero2 == 0
 
-# Entrada de datos
 numero1 = int(input("Introduce el primer número: "))
 numero2 = int(input("Introduce el segundo número: "))
 
-# Resultado
 resultado = esMultiplo(numero1, numero2)
 
 if resultado == True:
