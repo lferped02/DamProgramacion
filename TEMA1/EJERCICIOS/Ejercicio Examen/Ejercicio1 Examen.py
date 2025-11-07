@@ -6,13 +6,11 @@ eso = 0
 postObligatoria = 0
 
 registrando = True
-
 while registrando:
     respuesta = input("¿Desea registrar un nuevo incidente? S (Sí) / N (No): ").upper()
 
     if respuesta == "N":
         registrando = False
-
     elif respuesta == "S":
         nivel = ""
         while nivel not in ["E", "P"]:
