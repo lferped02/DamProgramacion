@@ -59,7 +59,7 @@ while opcion != "4":
                 print("Media de edad tipo B:", round(sumaEdades / cuentaB), "años")
             else:
                 print("No hay árboles tipo B.")
-            print("Árboles con más de 30 m:", cuentaAltos)
+            print(f"Árboles con más de 30 m {cuentaAltos}:")
 
     elif opcion == "e":
         print("Fin del programa.")
