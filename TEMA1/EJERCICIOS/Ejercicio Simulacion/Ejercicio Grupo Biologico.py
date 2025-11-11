@@ -7,8 +7,9 @@ while opcion != "4":
     print("b. Introducir datos")
     print("c. Ver resumen")
     print("e. Salir")
+    print("f. Muestra los datos del arbol")
 
-    opcion = input("Elige una opción (1-4): ")
+    opcion = input("Elige una opción (a-f): ")
 
     if opcion == "a":
         cantidad = int(input("¿Cuántos árboles vas a introducir? "))
@@ -30,36 +31,17 @@ while opcion != "4":
         if len(arboles) == 0:
             print("No hay árboles guardados.")
         else:
-            maximaAltura = 0
-            minimaAltura = 1000
-            sumaEdades = 0
-            cuentaB = 0
-            cuentaAltos = 0
+            i = 1
+            posMaxima=0
+            maximaAltura=altura[0]
+            while i<len(altura):
+                if altura[i]>maximaAltura:
+                    maximaAltura = altura[i]
+                    posMaxima=i
+                i=+1
+            print("Arbol con mayor altura")
+            print(f"Tipo: {tipo[posMaxima]}", f"Altura:{altura[posMaxima]}", f"Diametro: {diametro[posMaxima]}")
 
-            for a in arboles:
-                tipo = a[0]
-                diametro = a[1]
-                altura = a[2]
-
-                if altura > maximaAltura:
-                    maximaAltura = altura
-                if altura < minimaAltura:
-                    minimaAltura = altura
-                if altura > 30:
-                    cuentaAltos += 1
-                if tipo == "B" and len(a) == 4:
-                    edad = a[3]
-                    sumaEdades += edad
-                    cuentaB += 1
-
-            print("\nRESUMEN")
-            print("Altura máxima:", maximaAltura, "m")
-            print("Altura mínima:", minimaAltura, "m")
-            if cuentaB > 0:
-                print("Media de edad tipo B:", round(sumaEdades / cuentaB), "años")
-            else:
-                print("No hay árboles tipo B.")
-            print(f"Árboles con más de 30 m {cuentaAltos}:")
 
     elif opcion == "e":
         print("Fin del programa.")
