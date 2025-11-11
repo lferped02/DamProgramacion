@@ -3,17 +3,17 @@ opcion = ""
 
 while opcion != "4":
     print("\nMENÚ")
-    print("1. Número de árboles")
-    print("2. Introducir datos")
-    print("3. Ver resumen")
-    print("4. Salir")
+    print("a. Número de árboles")
+    print("b. Introducir datos")
+    print("c. Ver resumen")
+    print("e. Salir")
 
     opcion = input("Elige una opción (1-4): ")
 
-    if opcion == "1":
+    if opcion == "a":
         cantidad = int(input("¿Cuántos árboles vas a introducir? "))
 
-    elif opcion == "2":
+    elif opcion == "b":
         arboles = []
         for i in range(cantidad):
             print("\nÁrbol", i + 1)
@@ -26,7 +26,7 @@ while opcion != "4":
             else:
                 arboles.append([tipo, diametro, altura])
 
-    elif opcion == "3":
+    elif opcion == "c":
         if len(arboles) == 0:
             print("No hay árboles guardados.")
         else:
@@ -61,7 +61,7 @@ while opcion != "4":
                 print("No hay árboles tipo B.")
             print("Árboles con más de 30 m:", cuentaAltos)
 
-    elif opcion == "4":
+    elif opcion == "e":
         print("Fin del programa.")
 
     else:
