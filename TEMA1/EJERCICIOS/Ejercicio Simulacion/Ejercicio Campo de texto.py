@@ -1,7 +1,7 @@
 # Apartado 1:
 letra = input("Introduce una letra: ")
 listaPalabras = []
-palabras= ""
+opcion = ""
 
 print("Introduce palabras, escribe stop si no deseas guardar más palabras")
 
@@ -15,50 +15,30 @@ print(f"\nLa letra introducida es: {letra}")
 print(f"La lista de palabras es: {listaPalabras} y el número de palabras introducidas es: {len(listaPalabras)}")
 
 #Apartado 2:
-opcion = ""
-while opcion !="5":
-    print("\nMENU")
-    print("E. Introduzca E si desea devolver la lista de palabras que comienzan por la letra")
-    print("C. Introduzca C si desea devolver la lista de palabras que contienen la letra")
-    print("L. Introduzca L, la palabras ordenadas por longitud (sin repetir")
-    print("S. Introduzca S para terminar el programa")
+print("\nMenú de opciones:")
+print("Introduzca E si desea devolver la lista de palabras que comienzan por la letra")
+print("Introduzca C si desea devolver la lista de palabras que contienen la letra")
+print("Introduzca S para terminar el programa")
 
-    opcion = input("Elige una opcion: ").upper()
+opcion = input("Opción: ").upper()
 
-#Apartado 3:
+while opcion != "S":
     if opcion == "E":
-        empieza= input("Introduce la secuencia de caracteres:").lower()
-        listaE = []
-        for i in listaPalabras:
-            if palabras.lower()[0:len(empieza)]==empieza:
-                if palabras not in listaE:
-                    listaE.append(palabras)
-        print(f"La palabra que empiezan por esa secuencia{listaE}: ")
-#Apartado 4:
+        empieza=[]
+        for palabra in listaPalabras:
+            if palabra[0]== letra:
+                empieza.append(palabra)
+        print(f"Esta lista de palabra comienzan con la letra: {letra}")
+    
     elif opcion =="C":
-        listaC = []
+        devolver =[]
         for i in listaPalabras:
-            if letra in i.lower() and i not in listaC:
-                listaC.append(i)
-        print(f"La palabra que contienen la letra {listaC}")
-
-#Apartado 5:
-    elif opcion == "L":
-        if len(listaPalabras)>0:
-            palabraCorta = listaPalabras[0]
-            palabraLarga = listaPalabras[0]
-            for i in listaPalabras:
-                if len(i)<len(palabraCorta):
-                    palabraCorta = i
-                if len(i)<len(palabraLarga):
-                    palabraLarga = i
-            print(f"La palabra mas corta es {palabraCorta}: ")
-            print(f"La palabra mas larga es {palabraLarga}: ")
-        else: 
-            print("No hay palabras para comparar")
-
-#Apartado 6:
+            for letra in palabra:
+                devolver.append(palabra)
+        print(f"La lista de palabra que contiene la letra: {letra}")
+    
     elif opcion == "S":
-        print("Programa finalizada")
+        print("Fin del programa.")
+
     else:
-        print("Opcion no valida. Intentelo de nuevo")
+        print("Opción incorrecta.")
