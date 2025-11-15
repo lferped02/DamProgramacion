@@ -1,15 +1,17 @@
-#Obtener lista
-def obtenerLista():
-    lista = []
-    numero = int(input("Introduce un numero: "))
-    for i in range(0, numero):
-        lista.append(i)
-    return lista
+def leerNumeros():
+    numeros = []
+    for i in range(10):
+        numero = int(input(f"Introduce el número {i+1}: "))
+        numeros.append(numero)
+    return numeros
 
-#Devolver la lista
-def devolverLista(lista):
-    listaNueva = []
-    for i in lista:
-        if i %3==0:
-            listaNueva.append(i)
-    return listaNueva
+def filtrarTerminanEn3(lista):
+    return [n for n in lista if n % 10 == 3]
+
+def main():
+    numeros = leerNumeros()
+    resultado = filtrarTerminanEn3(numeros)
+    print("Números que terminan en 3:", resultado)
+
+# Ejecutar el programa
+main()
