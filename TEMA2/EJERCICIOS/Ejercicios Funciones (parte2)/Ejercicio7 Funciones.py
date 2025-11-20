@@ -1,21 +1,23 @@
-def cargarLista():
-    lista = []
-    cadena = input("Introduce una cadena (Enter para terminar): ")
-    while cadena != "":
-        lista.append(cadena)
-        cadena = input("Introduce otra cadena (Enter para terminar): ")
-    return lista
+def obtenerCadenaDeUsuario():
+    cadena = input("Introduce varias cadenas separadas por comas: ")
+    # Dividir la cadena por comas
+    cadenaDividida = cadena.split(',')
+    return cadenaDividida
 
-def eliminarRepetidos(lista):
-    listaSinRepetidos = []
-    for elemento in lista:
-        if elemento not in listaSinRepetidos:
-            listaSinRepetidos.append(elemento)
-    return listaSinRepetidos
+def construirListaSinRepetidos(listaConDuplicados):
+    listaSinDuplicados = []
+    for elemento in listaConDuplicados:
+        if elemento not in listaSinDuplicados:
+            listaSinDuplicados.append(elemento)
+    return listaSinDuplicados
 
+def programaCadenaUnicaPrincipal():
+    # Llamada correcta a la función
+    listaOriginal = obtenerCadenaDeUsuario()
+    listaUnica = construirListaSinRepetidos(listaOriginal)
 
-lista = cargarLista()
-print("Lista original:", lista)
-listaFinal = eliminarRepetidos(lista)
-print(f"Lista sin repetidos: {listaFinal}")
+    # Mostrar los resultados
+    print(f"Lista original (con posibles duplicados): {listaOriginal}")
+    print(f"Lista sin cadenas repetidas (usando bucles): {listaUnica}")
 
+programaCadenaUnicaPrincipal()
