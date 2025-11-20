@@ -1,17 +1,20 @@
+# Función para leer 10 números
 def leerNumeros():
     numeros = []
     for i in range(10):
-        numero = int(input(f"Introduce el número {i+1}: "))
+        numero = int(input("Introduce un número: "))
         numeros.append(numero)
     return numeros
 
+# Función para filtrar los que terminan en 3
 def filtrarTerminanEn3(lista):
-    return [n for n in lista if n % 10 == 3]
+    resultado = []
+    for n in lista:
+        if n % 10 == 3:
+            resultado.append(n)
+    return resultado
 
-def main():
-    numeros = leerNumeros()
-    resultado = filtrarTerminanEn3(numeros)
-    print("Números que terminan en 3:", resultado)
-
-# Ejecutar el programa
-main()
+# Programa principal
+numeros = leerNumeros()
+resultado = filtrarTerminanEn3(numeros)
+print(f"Los números que terminan en 3 son: {resultado}")
