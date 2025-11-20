@@ -13,11 +13,9 @@ def eliminarRepetidos(lista):
             listaSinRepetidos.append(elemento)
     return listaSinRepetidos
 
-def main():
-    lista = cargarLista()
-    print("Lista original:", lista)
-    listaFinal = eliminarRepetidos(lista)
-    print(f"Lista sin repetidos: {listaFinal}")
 
-# Ejecutar el programa
-main()
+lista = cargarLista()
+print("Lista original:", lista)
+listaFinal = eliminarRepetidos(lista)
+print(f"Lista sin repetidos: {listaFinal}")
+
