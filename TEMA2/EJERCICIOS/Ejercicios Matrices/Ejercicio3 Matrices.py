@@ -1,3 +1,6 @@
+matriz=[[8, 1, 6],
+        [3, 5, 7],
+        [4, 9, 2]]
 def numeroPares(matriz):
     pares=[]
     for fila in matriz:
@@ -6,6 +9,5 @@ def numeroPares(matriz):
                 pares.append(elemento)
     return pares
 
-matriz=[[1,2,3],
-        [4,5,6]]
+# Programa principal
 print(numeroPares(matriz))

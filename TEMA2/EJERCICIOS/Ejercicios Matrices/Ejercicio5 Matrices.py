@@ -1,3 +1,7 @@
+matriz=[[8, 1, 6],
+        [3, 5, 7],
+        [4, 9, 2]]
+
 def sumaFilasPares(matriz):
     suma = 0
     for i in range(len(matriz)):
@@ -5,7 +9,5 @@ def sumaFilasPares(matriz):
             suma += sum(matriz[i])
     return suma
 
-matriz = [[1, 2, 3], 
-          [4, 5, 6], 
-          [7, 8, 9]]
+# Programa principal
 print(sumaFilasPares(matriz))
