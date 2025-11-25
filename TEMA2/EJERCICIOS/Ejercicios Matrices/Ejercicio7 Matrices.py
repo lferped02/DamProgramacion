@@ -1,3 +1,8 @@
+matriz=[[8, 1, 6],
+        [3, 5, 7],
+        [4, 9, 2]]
+
+#Sumar las columnas pares
 def sumaColumnasPares(matriz):
     suma = 0
     for fila in matriz:
@@ -7,8 +12,4 @@ def sumaColumnasPares(matriz):
     return suma
 
 # Programa principal
-matriz=[[8, 1, 6],
-        [3, 5, 7],
-        [4, 9, 2]]
-
 print(sumaColumnasPares(matriz))
