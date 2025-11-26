@@ -10,36 +10,34 @@ def calculaMaximo(listaNumero):
             mayor = numero
     return mayor
 
-# Calcula la lista de máximos por fila
-def calculaListaMaximo(matriz):
+# Devuelve la lista de máximos por fila
+def getListaMaximosPorFila(matriz):
     listaMaximos = []
     for fila in matriz:
         listaMaximos.append(calculaMaximo(fila))
     return listaMaximos
 
-# Obtiene el máximo de una fila concreta
+# Devuelve el máximo de una fila concreta
 def getMaximoPorFila(numeroFila, matriz):
-    listaMaximo = calculaListaMaximo(matriz)
-    return listaMaximo[numeroFila]
+    return calculaMaximo(matriz[numeroFila])
 
-# Calcula el máximo de una columna
-def maximoColumna(matriz, columna):
+# Devuelve el máximo de una columna concreta
+def getMaximoPorColumna(matriz, columna):
     maximo = matriz[0][columna]
     for fila in matriz:
         if fila[columna] > maximo:
             maximo = fila[columna]
     return maximo
 
-# Calcula el máximo total de las sumas de filas
-def totalMatriz(matriz):
-    lista = []
+# Devuelve el máximo total de las sumas de filas
+def getMaximoTotal(matriz):
+    listaSumas = []
     for fila in matriz:
-        suma = sum(fila)
-        lista.append(suma)
-    return max(lista)
+        listaSumas.append(sum(fila))
+    return max(listaSumas)
 
 # Programa principal
-print("Máximos por fila:", calculaListaMaximo(matriz))
-print("Máximo de la primera fila:", calculaMaximo(matriz[0]))
-print("Máximo de la columna 1:", maximoColumna(matriz, 1))
-print("Máximo total de sumas de filas:", totalMatriz(matriz))
+print(f"Máximos por fila: {getListaMaximosPorFila(matriz)}")
+print(f"Máximo de la primera fila: {getMaximoPorFila(0, matriz)}")
+print(f"Máximo de la columna 1: {getMaximoPorColumna(matriz, 1)}")
+print(f"Máximo total de sumas de filas: {getMaximoTotal(matriz)}")
