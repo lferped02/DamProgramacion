@@ -20,13 +20,17 @@ def descifrar(matriz, listaCadena):
     return mensaje
 
 # Apartado2
-def buscaLetraMatriz(matriz, letra):
-    posicion = (-1, -1)
-    for fila in range(len(matriz)):
-        for columna in range(len(matriz[fila])):
-            if matriz[fila][columna] == letra:
-                posicion = (fila, columna)
-    return posicion
+def buscaLetraMatriz(matriz,letra):
+    posicionFila = -1
+    posicionColumna = -1   
+    encontrado = False 
+    for i in range(len(matriz)-1):
+        fila = matriz[i]
+        posicionColumna = buscaLetraFila(fila,letra)
+        if posicionColumna != -1:
+            encontrado = True
+            posicionFila = i
+    return posicionFila + posicionColumna
 
 def buscaLetraFila(listaletra, letra):
     posicion = -1
@@ -38,4 +42,4 @@ def buscaLetraFila(listaletra, letra):
 # Programa principal
 #print(descifrar(matriz, listaCadena))
 print(buscaLetraFila(['A', 'B', 'C', 'D'], 'C'))
-print(buscaLetraMatriz(matriz, "Z"))
+print(buscaLetraMatriz(matriz, 'G'))
