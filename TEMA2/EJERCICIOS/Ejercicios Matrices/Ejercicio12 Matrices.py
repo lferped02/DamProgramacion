@@ -1,18 +1,13 @@
-matriz=[[8, 1, 6],
-        [3, 5, 7],
-        [4, 9, 2]]
-
-#Matriz posición
-def matrizPosicion(n, m):
+# Matriz posición
+def matrizPosicion():
     matriz = []
-    for i in range(n):
+    for i in range(0,4):
         fila = []
-        for j in range(m):
-            fila.append(i + j)
+        for j in range(0,5):
+            elemento = i + j
+            fila.append(elemento)
         matriz.append(fila)
     return matriz
 
-#Programa principal
-matriz = matrizPosicion(3, 4)
-for fila in matriz:
-    print(fila)
+# Programa principal
+print(matrizPosicion())
