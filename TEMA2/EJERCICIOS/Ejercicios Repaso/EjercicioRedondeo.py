@@ -1,4 +1,3 @@
-import random
 # Ejercicio 1
 def redondear(valor):
     numero = float(valor)
@@ -16,4 +15,4 @@ print(redondear(1.449))
 print(redondear(1.444))
 print(redondear(0.375))
 print(redondear(0.374))
-print(redondear(1))      
+print(redondear(1))
