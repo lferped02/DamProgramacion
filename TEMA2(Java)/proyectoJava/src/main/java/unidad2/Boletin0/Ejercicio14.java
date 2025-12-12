@@ -13,10 +13,8 @@ public class Ejercicio14 {
         int sumaCorrecta = numero1 + numero2;
         int respuesta;
 
-        System.out.println("Calcula la suma de los siguientes números:");
         do {
-            System.out.println(numero1 + " + " + numero2 + " = ?");
-            System.out.print("Introduce tu respuesta: ");
+            System.out.print("Introduce la suma de los dos numeros: ");
             respuesta = scanner.nextInt();
 
             if (respuesta != sumaCorrecta) {
