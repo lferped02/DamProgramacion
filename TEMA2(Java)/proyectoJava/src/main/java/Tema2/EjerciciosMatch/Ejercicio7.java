@@ -1,12 +1,14 @@
-package EjerciciosMatch;
+package unidad2.BoletinMatch;
 
 import java.util.Scanner;
 
 public class Ejercicio7 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int numero;
-        do{
+        int numero = -1;
+
+        while (numero != 0) {
+
             System.out.println("\nListado de habitaciones:");
             System.out.println("1. Azul");
             System.out.println("2. Roja");
@@ -15,7 +17,7 @@ public class Ejercicio7 {
             System.out.println("5. Gris");
             System.out.println("0. Salir");
 
-            System.out.println("\"\\nIntroduce el número de habitación (0 para salir): ");
+            System.out.println("\nIntroduce el número de habitación (0 para salir): ");
             numero = scanner.nextInt();
             System.out.println();
 
@@ -51,6 +53,6 @@ public class Ejercicio7 {
                 default:
                     System.out.println("Número de habitación no válido.");
             }
-        } while (numero !=0);
+        }
     }
 }

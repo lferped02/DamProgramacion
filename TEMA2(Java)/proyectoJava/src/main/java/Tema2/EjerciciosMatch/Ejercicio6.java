@@ -1,9 +1,9 @@
-package EjerciciosMatch;
+package unidad2.BoletinMatch;
 
 import java.util.Scanner;
 
 public class Ejercicio6 {
-    public static void main(String[] args) {
+    public static void main() {
         System.out.println("Lista de habitaciones: ");
         System.out.println("1. Azul");
         System.out.println("2. Roja");
