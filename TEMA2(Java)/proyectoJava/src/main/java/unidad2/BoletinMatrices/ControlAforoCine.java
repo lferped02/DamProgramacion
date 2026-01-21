@@ -1,8 +1,8 @@
-package unidad2.BoletinMatrices;
+package BoletinMatrices;
 
 import java.util.Scanner;
 
-public class ControlAforoCine {
+public class ControlAforoCine{
     public static void main(String[] args) {
         boolean[][] sala = new boolean[3][4];
         ControlAforoCine referencia = new ControlAforoCine();
@@ -34,5 +34,16 @@ public class ControlAforoCine {
             }
         }
         return numeroFila;
+    }
+    public boolean validarAforo(boolean[][] mapaSala, int totalRegistrado) {
+        int conteoReal = 0;
+        for (int i = 0; i < mapaSala.length; i++) {
+            for (int j = 0; j < mapaSala[i].length; j++) {
+                if (mapaSala[i][j] == true) {
+                    conteoReal++;
+                }
+            }
+        }
+        return conteoReal == totalRegistrado;
     }
 }
