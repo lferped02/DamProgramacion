@@ -64,6 +64,7 @@ public class JavaRacingTeam {
             }
         }
     }
+
     public static int inicializarEscuderia(String[] nombresPilotos, double[] tiemposPilotos) {
         System.out.print("¿Cuántos pilotos quieres registrar? ");
         contadorPilotos = scanner.nextInt();
@@ -142,17 +143,24 @@ public class JavaRacingTeam {
         return -1;
     }
 
-    public static void generarIDS(String[] nombresPilotos) {
+    public static String[] generarIDS(String[] nombresPilotos) {
         if (contadorPilotos == 0) {
             System.out.println("No hay pilotos para generar IDs.");
-            return;
+            return new String[0];
         }
-        System.out.println("\n--- LISTADO DE IDs ---");
+        String[] ids = new String[contadorPilotos];
+        System.out.println("\n--- GENERANDO LISTADO DE IDs ---");
         for (int i = 0; i < contadorPilotos; i++) {
             String nombreActual = nombresPilotos[i];
             int limite = Math.min(nombreActual.length(), 3);
             String letras = nombreActual.substring(0, limite).toUpperCase();
-            System.out.println("Piloto: " + nombreActual + " -> ID: " + letras + "-" + i);
+            String nuevoId = letras + "-" + i;
+            ids[i] = nuevoId;
+
+            System.out.println("Piloto: " + nombreActual + " -> ID: " + nuevoId);
         }
+
+
+        return ids;
     }
 }
