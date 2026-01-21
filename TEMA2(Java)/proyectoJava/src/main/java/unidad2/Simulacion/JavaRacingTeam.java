@@ -14,7 +14,6 @@ public class JavaRacingTeam {
 
     public static void ejecutarMenu() {
         int opcion = 0;
-
         while (opcion != 6) {
             System.out.println("\n--- GESTIÓN JAVA RACING TEAM ---");
             System.out.println("1. Cargar/Reiniciar Datos");
@@ -25,8 +24,14 @@ public class JavaRacingTeam {
             System.out.println("6. Salir");
             System.out.print("Elige una opción: ");
 
-            opcion = scanner.nextInt();
-            scanner.nextLine();
+            if (scanner.hasNextInt()) {
+                opcion = scanner.nextInt();
+                scanner.nextLine();
+            } else {
+                System.out.println("Por favor, introduce un número.");
+                scanner.nextLine();
+                continue;
+            }
 
             switch (opcion) {
                 case 1:
@@ -41,12 +46,11 @@ public class JavaRacingTeam {
                 case 4:
                     System.out.print("Dime el nombre del piloto a buscar: ");
                     String nombreBusqueda = scanner.nextLine();
-                    double tiempoEncontrado = buscarPiloto(nombreBusqueda);
-
-                    if (tiempoEncontrado == -1) {
-                        System.out.println("Error: Piloto no encontrado.");
+                    double tiempoEncontrado = buscarPiloto(nombresPilotos, tiemposPilotos, nombreBusqueda, contadorPilotos);
+                    if (tiempoEncontrado != -1) {
+                        System.out.println("El piloto " + nombreBusqueda + " tiene un tiempo de: " + tiempoEncontrado + " segundos.");
                     } else {
-                        System.out.println("El mejor tiempo de " + nombreBusqueda + " es: " + tiempoEncontrado + "s");
+                        System.out.println("El piloto '" + nombreBusqueda + "' no se encuentra en el sistema.");
                     }
                     break;
                 case 5:
@@ -60,17 +64,22 @@ public class JavaRacingTeam {
             }
         }
     }
-    public static int inicializarEscuderia(String[]nombresPilotos, double[]tiemposPilotos) {
+    public static int inicializarEscuderia(String[] nombresPilotos, double[] tiemposPilotos) {
         System.out.print("¿Cuántos pilotos quieres registrar? ");
         contadorPilotos = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // Limpiar buffer
 
         for (int i = 0; i < contadorPilotos; i++) {
             System.out.print("Nombre del piloto " + (i + 1) + ": ");
+            nombresPilotos[i] = scanner.nextLine();
 
             double tiempo;
             do {
-                System.out.print("Tiempo de vuelta (segundos): ");
+                System.out.print("Tiempo de vuelta para " + nombresPilotos[i] + " (segundos): ");
+                while (!scanner.hasNextDouble()) {
+                    System.out.println("Error: Introduce un número válido.");
+                    scanner.next();
+                }
                 tiempo = scanner.nextDouble();
                 if (tiempo < 0) {
                     System.out.println("El tiempo no puede ser negativo. Reinténtalo.");
@@ -83,68 +92,67 @@ public class JavaRacingTeam {
         System.out.println("Datos cargados correctamente.");
         return contadorPilotos;
     }
-    public static void formatearPilotos(String[]nombresPilotos) {
+
+    public static void formatearPilotos(String[] nombresPilotos) {
         if (contadorPilotos == 0) {
             System.out.println("No hay pilotos registrados.");
             return;
         }
-
         for (int i = 0; i < contadorPilotos; i++) {
-            String nombre = nombresPilotos[i].trim().toUpperCase();
-            if (nombre.length() > 10) {
-                nombre = nombre.substring(0, 10) + ".";
+            if (nombresPilotos[i] != null) {
+                String nombre = nombresPilotos[i].trim().toUpperCase();
+                if (nombre.length() > 10) {
+                    nombre = nombre.substring(0, 10) + ".";
+                }
+                nombresPilotos[i] = nombre;
             }
-            nombresPilotos[i] = nombre;
         }
         System.out.println("Nombres formateados.");
     }
-    public static void obtenerEstadisticas(String[]nombresPilotos) {
+
+    public static void obtenerEstadisticas(String[] nombresPilotos) {
         if (contadorPilotos == 0) {
             System.out.println("No hay datos para estadísticas.");
             return;
         }
-
         double sumaTiempos = 0;
         double mejorTiempo = tiemposPilotos[0];
         String nombreMejor = nombresPilotos[0];
 
         for (int i = 0; i < contadorPilotos; i++) {
             sumaTiempos += tiemposPilotos[i];
-
             if (tiemposPilotos[i] < mejorTiempo) {
                 mejorTiempo = tiemposPilotos[i];
                 nombreMejor = nombresPilotos[i];
             }
         }
-
         double media = sumaTiempos / contadorPilotos;
         System.out.println("\n--- ESTADÍSTICAS ---");
-        System.out.println("Tiempo medio: " + media + "s");
+        System.out.printf("Tiempo medio: %.2fs\n", media);
         System.out.println("Piloto más rápido: " + nombreMejor + " con " + mejorTiempo + "s");
     }
-    public static double buscarPiloto(String nombre) {
-        for (int i = 0; i < contadorPilotos; i++) {
-            if (nombresPilotos[i].equalsIgnoreCase(nombre)) {
+
+    public static double buscarPiloto(String[] nombresPilotos, double[] tiemposPilotos, String nombre, int numeroPilotos) {
+        boolean encontrado = false;
+        for (int i = 0; i < numeroPilotos; i++) {
+            if (nombresPilotos[i] != null && nombresPilotos[i].equalsIgnoreCase(nombre)) {
                 return tiemposPilotos[i];
             }
         }
         return -1;
     }
-    public static String generarIDS(String[]nombresPilotos) {
+
+    public static void generarIDS(String[] nombresPilotos) {
         if (contadorPilotos == 0) {
             System.out.println("No hay pilotos para generar IDs.");
+            return;
         }
-
         System.out.println("\n--- LISTADO DE IDs ---");
         for (int i = 0; i < contadorPilotos; i++) {
             String nombreActual = nombresPilotos[i];
-            int limite = 3;
-            if (nombreActual.length() < 3) {
-                limite = nombreActual.length();
-            }
+            int limite = Math.min(nombreActual.length(), 3);
             String letras = nombreActual.substring(0, limite).toUpperCase();
             System.out.println("Piloto: " + nombreActual + " -> ID: " + letras + "-" + i);
         }
-        return "";
     }
 }
