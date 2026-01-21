@@ -3,10 +3,10 @@ package unidad2.Simulacion;
 import java.util.Scanner;
 
 public class JavaRacingTeam {
-    static String[] nombresPilotos = new String[100];
-    static double[] tiemposPilotos = new double[100];
-    static int contadorPilotos = 0;
-    static Scanner teclado = new Scanner(System.in);
+    public static String[] nombresPilotos = new String[100];
+    public static double[] tiemposPilotos = new double[100];
+    public static int contadorPilotos = 0;
+    public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         ejecutarMenu();
@@ -25,8 +25,8 @@ public class JavaRacingTeam {
             System.out.println("6. Salir");
             System.out.print("Elige una opción: ");
 
-            opcion = teclado.nextInt();
-            teclado.nextLine();
+            opcion = scanner.nextInt();
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
@@ -40,7 +40,7 @@ public class JavaRacingTeam {
                     break;
                 case 4:
                     System.out.print("Dime el nombre del piloto a buscar: ");
-                    String nombreBusqueda = teclado.nextLine();
+                    String nombreBusqueda = scanner.nextLine();
                     double tiempoEncontrado = buscarPiloto(nombreBusqueda);
 
                     if (tiempoEncontrado == -1) {
@@ -62,24 +62,23 @@ public class JavaRacingTeam {
     }
     public static int inicializarEscuderia(String[]nombresPilotos, double[]tiemposPilotos) {
         System.out.print("¿Cuántos pilotos quieres registrar? ");
-        contadorPilotos = teclado.nextInt();
-        teclado.nextLine();
+        contadorPilotos = scanner.nextInt();
+        scanner.nextLine();
 
         for (int i = 0; i < contadorPilotos; i++) {
             System.out.print("Nombre del piloto " + (i + 1) + ": ");
-            nombresPilotos[i] = teclado.nextLine();
 
             double tiempo;
             do {
                 System.out.print("Tiempo de vuelta (segundos): ");
-                tiempo = teclado.nextDouble();
+                tiempo = scanner.nextDouble();
                 if (tiempo < 0) {
                     System.out.println("El tiempo no puede ser negativo. Reinténtalo.");
                 }
             } while (tiempo < 0);
 
             tiemposPilotos[i] = tiempo;
-            teclado.nextLine();
+            scanner.nextLine();
         }
         System.out.println("Datos cargados correctamente.");
         return contadorPilotos;
