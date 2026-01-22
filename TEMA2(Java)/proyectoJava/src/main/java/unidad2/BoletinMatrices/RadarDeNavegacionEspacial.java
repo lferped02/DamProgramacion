@@ -1,4 +1,4 @@
-package BoletinMatrices;
+package unidad2.BoletinMatrices;
 
 import java.util.Scanner;
 
