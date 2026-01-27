@@ -8,8 +8,22 @@ public class Persona {
     String deporteFavorito;
     String peliculaFavorita;
 
-    //Contructores.
-
+    //Contructores (parámetro).
+    public Persona(String nombre, int edad, String lugarNacimiento, String deporteFavorito, String peliculaFavorita) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.lugarNacimiento = lugarNacimiento;
+        this.deporteFavorito = deporteFavorito;
+        this.peliculaFavorita = peliculaFavorita;
+    }
+    //Contructor por defecto.
+    public Persona() {
+        this.nombre = "";
+        this.edad = 0;
+        this.lugarNacimiento = "";
+        this.deporteFavorito = "";
+        this.peliculaFavorita = "";
+    }
 
     //Métodos.
     void hablar(){

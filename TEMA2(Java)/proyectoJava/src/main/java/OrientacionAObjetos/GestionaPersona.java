@@ -2,12 +2,7 @@ package OrientacionAObjetos;
 
 public class GestionaPersona {
     public static void main(String[] args) {
-        Persona persona = new Persona();
-        persona.nombre = "Paula";
-        persona.edad = 21;
-        persona.lugarNacimiento = "Cuenca";
-        persona.deporteFavorito = "Gimnasia Ritmica";
-        persona.peliculaFavorita = "Avatar";
+        Persona persona = new Persona("Paula", 21, "Cuenca", "Gimnasia Ritmica", "Avatar");
         System.out.println(persona.toString());
 
         Persona persona1 = new Persona();
