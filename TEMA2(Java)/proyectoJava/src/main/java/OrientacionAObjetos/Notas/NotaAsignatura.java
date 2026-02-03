@@ -14,4 +14,17 @@ public class NotaAsignatura {
     public double calcularMedia() {
         return (notaT1 + notaT2 + notaT3) / 3.0;
     }
+
+    public int trimestreAprobados() {
+        int contador = 0;
+        if (notaT1 >= 5) contador++;
+        if (notaT2 >= 5) contador++;
+        if (notaT3 >= 5) contador++;
+        return contador;
+    }
+
+    @Override
+    public String toString() {
+        return nombreAsignatura + " [T1: " + notaT1 + ", T2: " + notaT2 + ", T3: " + notaT3 + "]";
+    }
 }

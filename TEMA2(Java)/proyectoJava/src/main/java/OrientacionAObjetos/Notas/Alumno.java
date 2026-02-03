@@ -6,7 +6,6 @@ public class Alumno {
     NotaAsignatura notasProgramacion;
     NotaAsignatura notasBaseDatos;
 
-    // Constructor que coincide con tu nuevo Main
     public Alumno(String nombre, String email) {
         this.nombre = nombre;
         this.email = email;
