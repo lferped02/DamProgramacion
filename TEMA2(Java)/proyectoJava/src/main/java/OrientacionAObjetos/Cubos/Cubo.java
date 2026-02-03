@@ -10,15 +10,15 @@ public class Cubo {
     }
 
     public double calcularArea() {
-        return 6 * Math.pow(lado, 2);
+        return 6 * (lado * lado);
     }
 
     public double calcularVolumenCm3() {
-        return Math.pow(lado, 3) * 1000;
+        return (lado * lado * lado) * 1000;
     }
 
     public double capacidadMaxima() {
-        return Math.pow(lado, 3);
+        return lado * lado * lado;
     }
 
     public boolean rellenar(double litros) {
@@ -35,10 +35,14 @@ public class Cubo {
             return true;
         }
         return false;
+
     }
 
     @Override
     public String toString() {
-        return "Cubo [Lado: " + lado + " dm, Contenido: " + contenidoActual + " L]";
+        return "Cubo{" +
+                "lado=" + lado +
+                ", contenidoActual=" + contenidoActual +
+                '}';
     }
 }
