@@ -1,8 +1,8 @@
 package OrientacionAObjetos.Cubos;
 
 public class Cubo {
-    public double lado;
-    public double contenidoActual;
+    private double lado;
+    private double contenidoActual;
 
     public Cubo(double lado) {
         this.lado = lado;
@@ -10,30 +10,35 @@ public class Cubo {
     }
 
     public double calcularArea() {
-        return 6 * (lado * lado);
+        return 6 * Math.pow(lado, 2);
     }
 
-    public double calcularVolumen() {
-        return lado * lado * lado;
+    public double calcularVolumenCm3() {
+        return Math.pow(lado, 3) * 1000;
+    }
+
+    public double capacidadMaxima() {
+        return Math.pow(lado, 3);
     }
 
     public boolean rellenar(double litros) {
-        if (litros > 0 && (contenidoActual + litros <= calcularVolumen())) {
-            contenidoActual = contenidoActual + litros;
+        if (this.contenidoActual + litros <= capacidadMaxima()) {
+            this.contenidoActual += litros;
             return true;
         }
         return false;
     }
 
     public boolean vaciar(double litros) {
-        if (litros > 0 && (contenidoActual - litros >= 0)) {
-            contenidoActual = contenidoActual - litros;
+        if (this.contenidoActual - litros >= 0) {
+            this.contenidoActual -= litros;
             return true;
         }
         return false;
     }
 
-    public double getContenidoActual() {
-        return contenidoActual;
+    @Override
+    public String toString() {
+        return "Cubo [Lado: " + lado + " dm, Contenido: " + contenidoActual + " L]";
     }
 }
