@@ -11,11 +11,28 @@ public class Alumno {
         this.email = email;
     }
 
-    public void imprimeSiHaAprobado(NotaAsignatura asignatura) {
-        if (asignatura.calcularMedia() >= 5) {
-            System.out.println("El alumno " + nombre + " ha aprobado " + asignatura.nombreAsignatura);
+    @Override
+    public String toString() {
+        return "Alumno{" +
+                "nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", notasProgramacion=" + notasProgramacion +
+                ", notasBaseDatos=" + notasBaseDatos +
+                '}';
+    }
+
+    public void imprimeSiHaAprobado(NombreAsignatura n) {
+        NotaAsignatura nota = null;
+        if (this.notasProgramacion.nombreAsignatura.equals(n)) {
+            nota = this.notasProgramacion;
         } else {
-            System.out.println("El alumno " + nombre + " NO ha aprobado " + asignatura.nombreAsignatura);
+            nota = this.notasBaseDatos;
         }
+        if (nota.calcularMedia() >= 5) {
+            System.out.println("El alumno " + nombre + " ha aprobado " + nota.nombreAsignatura);
+        } else {
+            System.out.println("El alumno " + nombre + " NO ha aprobado " + nota.nombreAsignatura);
+        }
+
     }
 }
