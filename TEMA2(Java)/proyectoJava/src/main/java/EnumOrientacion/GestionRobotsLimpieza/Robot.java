@@ -1,0 +1,36 @@
+package EnumOrientacion.GestionRobotsLimpieza;
+
+class Robot {
+    public String id;
+    public int deposito;
+    public ModoRobot modo;
+    public int bateria;
+    public Habitacion habitacionAsignada;
+
+    public Robot(String id, ModoRobot modoInicial) {
+        this.id = id;
+        this.modo = modoInicial;
+        this.deposito = 20;
+        this.bateria = 100;
+    }
+
+    public void asignarHabitacion(Habitacion habitacion) {
+        if (this.modo == ModoRobot.AUTO) {
+            this.habitacionAsignada = habitacion;
+            this.habitacionAsignada.setEstado(EstadoHabitacion.LIMPIANDO);
+            System.out.println("LOG: Robot " + id + " asignado a " + habitacion.getEstado() + " en " + habitacion);
+        } else {
+            System.out.println("ERROR: No se puede asignar habitación. El robot " + id + " está en modo " + modo);
+        }
+    }
+
+    public void vaciarDeposito() {
+        this.deposito = 0;
+        System.out.println("LOG: Depósito del robot " + id + " vaciado.");
+    }
+
+    public void recargar() {
+        this.bateria = 100;
+        System.out.println("LOG: Robot " + id + " recargado al 100%.");
+    }
+}
