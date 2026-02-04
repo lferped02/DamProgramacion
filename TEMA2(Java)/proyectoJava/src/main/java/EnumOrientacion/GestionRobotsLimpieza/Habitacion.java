@@ -17,10 +17,13 @@ class Habitacion {
         this.estado = nuevoEstado;
     }
 
-    public EstadoHabitacion getEstado() { return estado; }
+    public EstadoHabitacion getEstado() {
+        return estado;
+    }
 
     @Override
     public String toString() {
+
         return nombre + " (" + tamanoM2 + "m²) - Estado: " + estado;
     }
 }
