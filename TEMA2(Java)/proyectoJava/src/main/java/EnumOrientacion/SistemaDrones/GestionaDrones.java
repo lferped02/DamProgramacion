@@ -1,13 +1,13 @@
 package EnumOrientacion.SistemaDrones;
 
 public class GestionaDrones {
-     static void main(String[] args) {
+    static void main(String[] args) {
         Ruta ruta = new Ruta("Almacén A", "Calle Falsa 123", 5.0);
         Ruta ruta2 = new Ruta("Almacén A", "Av. Siempre Viva 742", 12.0);
         Ruta ruta3 = new Ruta("Almacén B", "Centro Comercial", 2.5);
 
-        Dron dron = new Dron("DRON-01", 10.0); // Carga máx 10kg
-        Dron dron2 = new Dron("DRON-02", 15.0); // Carga máx 15kg
+        Dron dron = new Dron("DRON-01", 10.0);
+        Dron dron2 = new Dron("DRON-02", 15.0);
 
         dron.asignarRuta(ruta);
         dron2.asignarRuta(ruta2);

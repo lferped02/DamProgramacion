@@ -15,7 +15,6 @@ public class Dron {
     }
 
     public void asignarRuta(Ruta ruta) {
-        // Validación de estado y peso
         if (this.estado != EstadoDron.ENREPOSO) {
             System.out.println("Error: El dron " + id + " no está disponible.");
         } else if (ruta.getPesoPaquete() > this.cargaMaxima) {

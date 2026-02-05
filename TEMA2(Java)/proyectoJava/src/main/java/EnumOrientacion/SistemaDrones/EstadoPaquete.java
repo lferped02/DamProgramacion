@@ -1,5 +1,5 @@
 package EnumOrientacion.SistemaDrones;
 
- enum EstadoPaquete {
+public enum EstadoPaquete {
     ENPREPARACION, ENREPARTO, RETRASADO, CANCELADO
 }
