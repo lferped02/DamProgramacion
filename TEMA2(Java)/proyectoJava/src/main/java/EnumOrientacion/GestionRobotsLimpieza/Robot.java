@@ -1,20 +1,20 @@
 package EnumOrientacion.GestionRobotsLimpieza;
 
 class Robot {
-    public String id;
-    public int deposito;
-    public ModoRobot modo;
-    public int bateria;
-    public Habitacion habitacionAsignada;
+     String id;
+     int deposito;
+     ModoRobot modo;
+     int bateria;
+     Habitacion habitacionAsignada;
 
-    public Robot(String id, ModoRobot modoInicial) {
+     Robot(String id, ModoRobot modoInicial) {
         this.id = id;
         this.modo = modoInicial;
         this.deposito = 20;
         this.bateria = 100;
     }
 
-    public void asignarHabitacion(Habitacion h) {
+     void asignarHabitacion(Habitacion h) {
         if (this.modo == ModoRobot.AUTO) {
             this.habitacionAsignada = h;
             this.habitacionAsignada.setEstado(EstadoHabitacion.LIMPIANDO);
@@ -24,12 +24,12 @@ class Robot {
         }
     }
 
-    public void vaciarDeposito() {
+     void vaciarDeposito() {
         this.deposito = 0;
         System.out.println("LOG: Depósito del robot " + id + " vaciado.");
     }
 
-    public void recargar() {
+     void recargar() {
         this.bateria = 100;
         System.out.println("LOG: Robot " + id + " recargado al 100%.");
     }

@@ -1,5 +1,5 @@
 package EnumOrientacion.SistemaDrones;
 
-public enum EstadoDron {
+ enum EstadoDron {
     ENREPOSO, ENRUTA, CARGANDO, FUERADESERVICIO
 }

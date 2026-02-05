@@ -1,7 +1,7 @@
 package EnumOrientacion.SistemaDrones;
 
-public class GestionaDrones {
-    public static void main(String[] args) {
+ class GestionaDrones {
+     static void main(String[] args) {
         Ruta ruta1 = new Ruta("Madrid", "Toledo", 2.5);
         Ruta ruta2 = new Ruta("Barcelona", "Sitges", 1.0);
         Ruta ruta3 = new Ruta("Valencia", "Alicante", 3.2);

@@ -1,19 +1,19 @@
 package EnumOrientacion.SistemaDrones;
 
 class Dron {
-    public String id;
-    public int bateria;
-    public EstadoDron estado;
-    public double cargaMaxima;
-    public Ruta rutaAsignada;
+     String id;
+     int bateria;
+     EstadoDron estado;
+     double cargaMaxima;
+     Ruta rutaAsignada;
 
-    public Dron(String id, double cargaMaxima) {
+     Dron(String id, double cargaMaxima) {
         this.id = id;
         this.estado = EstadoDron.ENREPOSO;
         this.cargaMaxima = cargaMaxima;
     }
 
-    public void asignarRuta(Ruta ruta) {
+     void asignarRuta(Ruta ruta) {
         if (this.estado == EstadoDron.ENREPOSO) {
             this.rutaAsignada = ruta;
             this.estado = EstadoDron.ENRUTA;
@@ -24,7 +24,7 @@ class Dron {
         }
     }
 
-    public void cargarBateria() {
+     void cargarBateria() {
         this.bateria = 100;
         this.estado = EstadoDron.CARGANDO;
         System.out.println("LOG: El dron " + id + " está cargando. Batería al 100%.");

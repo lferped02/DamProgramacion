@@ -1,7 +1,7 @@
 package EnumOrientacion.GestionRobotsLimpieza;
 
-public class GestionaRobots {
-    public static void main(String[] args) {
+ class GestionaRobots {
+     static void main(String[] args) {
         Habitacion h = new Habitacion("Sala de Juntas", 50.5, 80);
         Habitacion h2 = new Habitacion("Laboratorio 1", 30.0, 40);
         Habitacion h3 = new Habitacion("Oficina Principal", 20.0, 10);

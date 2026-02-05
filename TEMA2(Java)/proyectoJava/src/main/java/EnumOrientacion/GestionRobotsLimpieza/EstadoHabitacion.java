@@ -1,5 +1,5 @@
 package EnumOrientacion.GestionRobotsLimpieza;
 
-public enum EstadoHabitacion {
+ enum EstadoHabitacion {
     LIBRE, LIMPIANDO, BLOQUEADA
 }

@@ -1,5 +1,5 @@
 package EnumOrientacion.GestionRobotsLimpieza;
 
-public enum ModoRobot {
+ enum ModoRobot {
     AUTO, ANUAL, DOCKED, ERROR, MANUAL
 }
