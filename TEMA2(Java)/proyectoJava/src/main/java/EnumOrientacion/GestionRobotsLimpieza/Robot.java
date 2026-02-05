@@ -14,11 +14,11 @@ class Robot {
         this.bateria = 100;
     }
 
-    public void asignarHabitacion(Habitacion habitacion) {
+    public void asignarHabitacion(Habitacion h) {
         if (this.modo == ModoRobot.AUTO) {
-            this.habitacionAsignada = habitacion;
+            this.habitacionAsignada = h;
             this.habitacionAsignada.setEstado(EstadoHabitacion.LIMPIANDO);
-            System.out.println("LOG: Robot " + id + " asignado a " + habitacion.getEstado() + " en " + habitacion);
+            System.out.println("LOG: Robot " + id + " asignado a " + h.getEstado() + " en " + h);
         } else {
             System.out.println("ERROR: No se puede asignar habitación. El robot " + id + " está en modo " + modo);
         }
