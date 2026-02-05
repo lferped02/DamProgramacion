@@ -1,25 +1,27 @@
 package EnumOrientacion.SistemaDrones;
 
- class GestionaDrones {
+public class GestionaDrones {
      static void main(String[] args) {
-        Ruta ruta1 = new Ruta("Madrid", "Toledo", 2.5);
-        Ruta ruta2 = new Ruta("Barcelona", "Sitges", 1.0);
-        Ruta ruta3 = new Ruta("Valencia", "Alicante", 3.2);
+        Ruta ruta = new Ruta("Almacén A", "Calle Falsa 123", 5.0);
+        Ruta ruta2 = new Ruta("Almacén A", "Av. Siempre Viva 742", 12.0);
+        Ruta ruta3 = new Ruta("Almacén B", "Centro Comercial", 2.5);
 
-        Dron dronA = new Dron("DRON-01", 5.0);
-        Dron dronB = new Dron("DRON-02", 10.0);
+        Dron dron = new Dron("DRON-01", 10.0); // Carga máx 10kg
+        Dron dron2 = new Dron("DRON-02", 15.0); // Carga máx 15kg
 
-        System.out.println("--- Asignando rutas iniciales ---");
-        dronA.asignarRuta(ruta1);
-        dronB.asignarRuta(ruta2);
+        dron.asignarRuta(ruta);
+        dron2.asignarRuta(ruta2);
 
-        ruta1.setEstadoPaquete(EstadoPaquete.RETRASADO);
-        ruta2.setEstadoPaquete(EstadoPaquete.CANCELADO);
+        dron.getRutaAsignada().setEstado(EstadoPaquete.RETRASADO);
+        dron2.getRutaAsignada().setEstado(EstadoPaquete.CANCELADO);
 
-        System.out.println("Estado Ruta 1: " + ruta1.getEstadoPaquete());
-        System.out.println("Estado Ruta 2: " + ruta2.getEstadoPaquete());
 
-        System.out.println("\n--- Intento de asignación a dron ocupado ---");
-        dronA.asignarRuta(ruta3);
+        System.out.print("Intento de reasignación: ");
+        dron.asignarRuta(ruta3);
+
+        Ruta rutaPesada = new Ruta("Puerto", "Fábrica", 50.0);
+        Dron d3 = new Dron("DRON-03", 20.0);
+        System.out.print("Prueba de peso: ");
+        d3.asignarRuta(rutaPesada);
     }
 }

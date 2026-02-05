@@ -4,28 +4,19 @@ class Ruta {
      String origen;
      String destino;
      double pesoPaquete;
-     EstadoPaquete estadoPaquete;
+     EstadoPaquete estado;
 
-     Ruta(String origen, String destino, double pesoPaquete) {
+    public Ruta(String origen, String destino, double pesoPaquete) {
         this.origen = origen;
         this.destino = destino;
         this.pesoPaquete = pesoPaquete;
-        this.estadoPaquete = EstadoPaquete.ENPREPARACION;
+        this.estado = EstadoPaquete.ENPREPARACION;
     }
 
-     void setEstadoPaquete(EstadoPaquete nuevoEstado) {
-        this.estadoPaquete = nuevoEstado;
-    }
-
-     EstadoPaquete getEstadoPaquete() {
-        return estadoPaquete;
-    }
-
-    @Override
-    public String toString() {
-        return "Ruta{" +
-                "destino='" + destino + '\'' +
-                ", estadoPaquete=" + estadoPaquete +
-                '}';
-    }
+    public double getPesoPaquete() {
+        return pesoPaquete; }
+    public void setEstado(EstadoPaquete estado) {
+        this.estado = estado; }
+    public EstadoPaquete getEstado() {
+        return estado; }
 }
