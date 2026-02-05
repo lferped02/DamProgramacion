@@ -34,6 +34,10 @@ class Dron {
         this.estado = EstadoDron.CARGANDO;
     }
 
+     Ruta getRutaAsignada() {
+         return rutaAsignada;
+     }
+
     @Override
     public String toString() {
         return "Dron{" +
