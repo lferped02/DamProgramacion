@@ -1,10 +1,10 @@
 package EnumOrientacion.SistemaDrones;
 
-class Ruta {
-     String origen;
-     String destino;
-     double pesoPaquete;
-     EstadoPaquete estado;
+public class Ruta {
+    private String origen;
+    private String destino;
+    private double pesoPaquete;
+    private EstadoPaquete estado;
 
     public Ruta(String origen, String destino, double pesoPaquete) {
         this.origen = origen;
@@ -14,9 +14,24 @@ class Ruta {
     }
 
     public double getPesoPaquete() {
-        return pesoPaquete; }
+        return pesoPaquete;
+    }
+
     public void setEstado(EstadoPaquete estado) {
-        this.estado = estado; }
+        this.estado = estado;
+    }
+
     public EstadoPaquete getEstado() {
-        return estado; }
+        return estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Ruta{" +
+                "origen='" + origen + '\'' +
+                ", destino='" + destino + '\'' +
+                ", peso=" + pesoPaquete + "kg" +
+                ", estado=" + estado +
+                '}';
+    }
 }

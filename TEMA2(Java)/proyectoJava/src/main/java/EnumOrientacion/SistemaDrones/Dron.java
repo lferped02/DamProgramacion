@@ -1,22 +1,21 @@
 package EnumOrientacion.SistemaDrones;
 
+public class Dron {
+    private String id;
+    private EstadoDron estado;
+    private double bateria;
+    private double cargaMaxima;
+    private Ruta rutaAsignada;
 
-class Dron {
-     String id;
-     EstadoDron estado;
-     int bateria;
-     double cargaMaxima;
-     Ruta rutaAsignada;
-
-     Dron(String id, double cargaMaxima) {
+    public Dron(String id, double cargaMaxima) {
         this.id = id;
         this.estado = EstadoDron.ENREPOSO;
-        this.bateria = 100;
+        this.bateria = 100.0;
         this.cargaMaxima = cargaMaxima;
     }
 
-     void asignarRuta(Ruta ruta) {
-        // Validación de estado y peso (Apartado 2)
+    public void asignarRuta(Ruta ruta) {
+        // Validación de estado y peso
         if (this.estado != EstadoDron.ENREPOSO) {
             System.out.println("Error: El dron " + id + " no está disponible.");
         } else if (ruta.getPesoPaquete() > this.cargaMaxima) {
@@ -29,23 +28,24 @@ class Dron {
         }
     }
 
-     void cargarBateria() {
-        this.bateria = 100;
+    public void cargarBateria() {
+        this.bateria = 100.0;
         this.estado = EstadoDron.CARGANDO;
+        System.out.println("Dron " + id + " puesto a cargar.");
     }
 
-     Ruta getRutaAsignada() {
-         return rutaAsignada;
-     }
+    public Ruta getRutaAsignada() {
+        return rutaAsignada;
+    }
 
     @Override
     public String toString() {
         return "Dron{" +
                 "id='" + id + '\'' +
                 ", estado=" + estado +
-                ", bateria=" + bateria +
-                ", cargaMaxima=" + cargaMaxima +
-                ", rutaAsignada=" + rutaAsignada +
+                ", bateria=" + bateria + "%" +
+                ", cargaMaxima=" + cargaMaxima + "kg" +
+                ", rutaAsignada=" + (rutaAsignada != null ? "Asignada" : "Ninguna") +
                 '}';
     }
 }
