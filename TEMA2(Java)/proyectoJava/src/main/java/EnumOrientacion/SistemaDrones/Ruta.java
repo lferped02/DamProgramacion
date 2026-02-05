@@ -23,6 +23,9 @@ class Ruta {
 
     @Override
     public String toString() {
-        return "Ruta a " + destino + " [" + estadoPaquete + "]";
+        return "Ruta{" +
+                "destino='" + destino + '\'' +
+                ", estadoPaquete=" + estadoPaquete +
+                '}';
     }
 }

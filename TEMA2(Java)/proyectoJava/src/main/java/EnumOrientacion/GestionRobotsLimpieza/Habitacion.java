@@ -23,7 +23,10 @@ class Habitacion {
 
     @Override
     public String toString() {
-
-        return nombre + " (" + tamanoM2 + "m²) - Estado: " + estado;
+        return "Habitacion{" +
+                "nombre='" + nombre + '\'' +
+                ", tamanoM2=" + tamanoM2 +
+                ", estado=" + estado +
+                '}';
     }
 }
