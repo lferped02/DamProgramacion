@@ -1,7 +1,7 @@
 package OrientacionAObjetos.Gatos;
 
-public class GestionaGato {
-    public static void main(String[] args) {
+ class GestionaGato {
+     static void main(String[] args) {
         Gato gata1 = new Gato("Blanco", "Persa", "hembra", 3, 4.2);
         Gato gata2 = new Gato("Gris", "Siamés", "hembra", 2, 3.8);
         Gato gatoMacho = new Gato("Naranja", "Común", "macho", 5, 5.5);

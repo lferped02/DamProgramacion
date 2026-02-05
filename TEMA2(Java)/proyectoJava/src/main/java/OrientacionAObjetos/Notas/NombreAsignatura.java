@@ -1,5 +1,5 @@
 package OrientacionAObjetos.Notas;
 
-public enum NombreAsignatura {
+ enum NombreAsignatura {
     PROGRAMACION, BASEDEDATOS;
 }

@@ -1,7 +1,7 @@
 package OrientacionAObjetos.Cubos;
 
-public class GestionaLitros {
-    public static void main(String[] args) {
+ class GestionaLitros {
+     static void main(String[] args) {
         Cubo miCubo = new Cubo(4);
         System.out.println("--- Datos del Cubo ---");
         System.out.println("Área total: " + miCubo.calcularArea() + " dm2");

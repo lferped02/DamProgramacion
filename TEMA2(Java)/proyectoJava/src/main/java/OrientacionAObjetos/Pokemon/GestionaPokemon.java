@@ -1,7 +1,7 @@
 package OrientacionAObjetos.Pokemon;
 
-public class GestionaPokemon {
-    public static void main(String[] args) {
+ class GestionaPokemon {
+     static void main(String[] args) {
         Pokemon raichu = new Pokemon("Raichu", "Eléctrico", 100, null);
         Pokemon raticate = new Pokemon("Raticate", "Normal", 60, null);
 

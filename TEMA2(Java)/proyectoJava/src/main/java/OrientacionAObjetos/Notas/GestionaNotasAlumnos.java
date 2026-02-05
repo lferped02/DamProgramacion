@@ -1,7 +1,7 @@
 package OrientacionAObjetos.Notas;
 
-public class GestionaNotasAlumnos {
-    public static void main(String[] args) {
+ class GestionaNotasAlumnos {
+     static void main(String[] args) {
         Alumno lucia = new Alumno("Lucía", "lucia@email.com");
         Alumno andres = new Alumno("Andrés", "andres@email.com");
         Alumno vicente = new Alumno("Vicente", "vicente@email.com");

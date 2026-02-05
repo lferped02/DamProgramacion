@@ -1,6 +1,6 @@
 package OrientacionAObjetos.Persona;
 
-public class Persona {
+ class Persona {
     //Atributos.
     String nombre;
     int edad;
@@ -9,7 +9,7 @@ public class Persona {
     String peliculaFavorita;
 
     //Contructores (parámetro).
-    public Persona(String nombre, int edad, String lugarNacimiento, String deporteFavorito, String peliculaFavorita) {
+     Persona(String nombre, int edad, String lugarNacimiento, String deporteFavorito, String peliculaFavorita) {
         this.nombre = nombre;
         this.edad = edad;
         this.lugarNacimiento = lugarNacimiento;
@@ -17,7 +17,7 @@ public class Persona {
         this.peliculaFavorita = peliculaFavorita;
     }
     //Contructor por defecto.
-    public Persona() {
+     Persona() {
         this.nombre = "";
         this.edad = 0;
         this.lugarNacimiento = "";
@@ -31,11 +31,13 @@ public class Persona {
     }
 
     boolean haRobado(){
-    return false;
+
+         return false;
     }
 
     void comer(){
-        System.out.println(nombre+ " está comiendo.");
+
+         System.out.println(nombre+ " está comiendo.");
     }
 
     @Override

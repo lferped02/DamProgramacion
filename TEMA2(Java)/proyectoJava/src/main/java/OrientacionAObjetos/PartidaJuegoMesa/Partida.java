@@ -1,17 +1,17 @@
 package OrientacionAObjetos.PartidaJuegoMesa;
 
-public class Partida {
-    public String nombreJuego;
-    public Participante[] participantes;
-    public String ganadorPartida;
+ class Partida {
+     String nombreJuego;
+     Participante[] participantes;
+     String ganadorPartida;
 
-    public Partida(String nombreJuego, Participante[] participantes, String ganadorPartida) {
+     Partida(String nombreJuego, Participante[] participantes, String ganadorPartida) {
         this.nombreJuego = nombreJuego;
         this.participantes = participantes;
         this.ganadorPartida = ganadorPartida;
     }
 
-    public Participante obtenerLiderTorneo() {
+     Participante obtenerLiderTorneo() {
         if (participantes == null || participantes.length == 0) return null;
 
         Participante lider = participantes[0];
@@ -23,7 +23,7 @@ public class Partida {
         return lider;
     }
 
-    public void mostrarInfoPartida() {
+     void mostrarInfoPartida() {
         System.out.println("Juego: " + nombreJuego);
         System.out.println("Ganador de esta partida: " + ganadorPartida);
         Participante lider = obtenerLiderTorneo();

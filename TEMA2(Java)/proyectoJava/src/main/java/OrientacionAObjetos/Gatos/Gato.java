@@ -1,13 +1,13 @@
 package OrientacionAObjetos.Gatos;
 
-public class Gato {
+ class Gato {
     String color;
     String raza;
     String sexo;
     int edad;
     double peso;
 
-    public Gato(String color, String raza, String sexo, int edad, double peso) {
+     Gato(String color, String raza, String sexo, int edad, double peso) {
         this.color = color;
         this.raza = raza;
         this.sexo = sexo;
@@ -15,15 +15,15 @@ public class Gato {
         this.peso = peso;
     }
 
-    public void maullar() {
+     void maullar() {
         System.out.println("miuauuuuu");
     }
 
-    public void ronronear() {
+     void ronronear() {
         System.out.println("rrrrr");
     }
 
-    public void comer(String comida) {
+     void comer(String comida) {
         if (comida.equalsIgnoreCase("pescado")) {
             System.out.println("Yummy Yummy");
         } else {
@@ -31,7 +31,7 @@ public class Gato {
         }
     }
 
-    public void pelear(Gato oponente) {
+     void pelear(Gato oponente) {
         if (this.sexo.equals(oponente.sexo)) {
             System.out.println("Ven aquí que te vas a enterar");
         } else {

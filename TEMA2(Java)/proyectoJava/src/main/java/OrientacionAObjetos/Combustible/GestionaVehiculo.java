@@ -1,7 +1,7 @@
 package OrientacionAObjetos.Combustible;
 
-public class GestionaVehiculo {
-    public static void main(String[] args) {
+ class GestionaVehiculo {
+     static void main(String[] args) {
         Vehiculos coche1 = new Vehiculos("Toyota", "Corolla", 2022, "Híbrido", 50.0, 4.5, 5.0);
         Vehiculos coche2 = new Vehiculos("Ford", "F-150", 2020, "Gasolina", 98.0, 12.0, 40.0);
 

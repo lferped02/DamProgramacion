@@ -1,23 +1,24 @@
 package OrientacionAObjetos.Pokemon;
 
-public class Pokemon {
+ class Pokemon {
     String nombre;
     String tipo;
     int nivelVida;
     Pokemon evolucion;
 
-    public Pokemon(String nombre, String tipo, int nivelVida, Pokemon evolucion) {
+     Pokemon(String nombre, String tipo, int nivelVida, Pokemon evolucion) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.nivelVida = nivelVida;
         this.evolucion = evolucion;
     }
 
-    public boolean luchar(Pokemon oponente) {
-        return this.nivelVida >= oponente.nivelVida;
+     boolean luchar(Pokemon oponente) {
+
+         return this.nivelVida >= oponente.nivelVida;
     }
 
-    public void evolucionar() {
+     void evolucionar() {
         if (this.evolucion != null) {
             System.out.println("¡" + this.nombre + " está evolucionando!");
             this.nombre = this.evolucion.nombre;

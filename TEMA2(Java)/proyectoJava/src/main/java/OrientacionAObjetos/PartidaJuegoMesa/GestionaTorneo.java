@@ -1,7 +1,7 @@
 package OrientacionAObjetos.PartidaJuegoMesa;
 
-public class GestionaTorneo {
-    public static void main(String[] args) {
+ class GestionaTorneo {
+     static void main(String[] args) {
         Participante p1 = new Participante("GamerX", "Juan", 25, 150);
         Participante p2 = new Participante("MeeplesKing", "Ana", 30, 200);
         Participante p3 = new Participante("DiceMaster", "Luis", 22, 120);
