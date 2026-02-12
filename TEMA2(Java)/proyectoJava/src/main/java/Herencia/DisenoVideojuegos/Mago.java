@@ -1,14 +1,8 @@
 package Herencia.DisenoVideojuegos;
 
-public class Mago extends Personaje {
-
-    public Mago(String nombre, int nivel, int hp) {
-        super(nombre, nivel, hp);
-    }
-
-    @Override
-    public String getArma() {
-        return "Hechizo";
+class Mago extends Personaje {
+    public Mago(String nombre) {
+        super(nombre, "Hechizo");
     }
 
     @Override

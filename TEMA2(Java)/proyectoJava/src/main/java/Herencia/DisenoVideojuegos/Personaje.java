@@ -1,21 +1,31 @@
 package Herencia.DisenoVideojuegos;
 
-public abstract class Personaje {
+public class Personaje {
+    private String nombre;
+    private int nivel;
+    private int hp;
+    private String arma;
 
-    protected String nombre;
-    protected int nivel;
-    protected int hp;
-    protected String arma;
-
-    public Personaje(String nombre, int nivel, int hp) {
+    public Personaje(String nombre, String arma) {
         this.nombre = nombre;
-        this.nivel = nivel;
-        this.hp = hp;
+        this.arma = arma;
+        this.nivel = 1;
+        this.hp = 100;
     }
 
-    public abstract String getArma();
+    public String getArma() {
+        return this.arma;
+    }
 
-    public abstract boolean esAtacado(Personaje atacante);
+    public String getNombre() {
+        return nombre;
+    }
 
-    public abstract boolean esAtacado(Personaje atacante, int distancia);
+    public boolean esAtacado(Personaje atacante) {
+        return false;
+    }
+
+    public boolean esAtacado(Personaje atacante, int distancia) {
+        return false;
+    }
 }
