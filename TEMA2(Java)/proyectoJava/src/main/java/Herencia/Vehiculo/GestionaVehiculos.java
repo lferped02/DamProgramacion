@@ -2,18 +2,16 @@ package Herencia.Vehiculo;
 
 public class GestionaVehiculos {
     public static void main(String[] args) {
-        Vehiculo cocheEco = new Automovil("Ana", 4, "ECO", 5);
-        Vehiculo cocheC = new Automovil("Pedro", 4, "C", 3);
+        Vehiculo cocheEco = new Automovil("Ana", 5, 4, "ECO");
+        Vehiculo cocheC = new Automovil("Pedro", 3, 4, "C");
 
-        System.out.println("--- PRUEBAS AUTOMÓVILES ---");
-        System.out.println("ECO en Madrid tiene limitación: " + cocheEco.tieneLimitacionParaCircular("Madrid")); // false
-        System.out.println("Tipo C en Sevilla tiene limitación: " + cocheC.tieneLimitacionParaCircular("Sevilla")); // true
+        System.out.println("¿Coche ECO limitado en Madrid?: " + ((Automovil)cocheEco).tieneLimitacionParaCircular("Madrid"));
+        System.out.println("¿Coche C limitado en Sevilla?: " + ((Automovil)cocheC).tieneLimitacionParaCircular("Sevilla"));
 
-        Camion camion1 = new Camion("Logística A", 4, "B", 500, 2, 2);
-        Camion camion2 = new Camion("Logística B", 6, "B", 5000, 7, 3);
+        Vehiculo camion1 = new Camion("Paco", 2, 4, 500, 2);
+        Vehiculo camion2 = new Camion("Marta", 2, 6, 5000, 7);
 
-        System.out.println("\n--- PRUEBAS CAMIONES ---");
-        System.out.println("Camión 1 (500kg) requiere licencia: " + camion1.getLicencias());
-        System.out.println("Camión 2 (5000kg, 7 pax) requiere licencia: " + camion2.getLicencias());
+        System.out.println("\nCarnet para camión 500kg: " + ((Camion)camion1).calcularCarnet());
+        System.out.println("Carnet para camión 5000kg: " + ((Camion)camion2).calcularCarnet());
     }
 }

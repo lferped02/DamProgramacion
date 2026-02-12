@@ -1,14 +1,15 @@
 package Herencia.Vehiculo;
 
 public class CocheElectrico extends Automovil {
-    private String tipoBateria;
+    private TipoDeBateria tipoBateria;
 
-    public CocheElectrico(String dueno, int ruedas, String calificacion, int puertas, String bateria) {
-        super(dueno, ruedas, calificacion, puertas);
-        if (bateria.equals("LFP") || bateria.equals("NCM")) {
-            this.tipoBateria = bateria;
-        } else {
-            this.tipoBateria = "LFP";
-        }
+    public CocheElectrico(String dueno, int numPuertas, int numRuedas, TipoDeBateria tipoBateria) {
+        super(dueno, numPuertas, numRuedas, "0");
+        this.tipoBateria = tipoBateria;
+    }
+
+    // Getter específico
+    public TipoDeBateria getTipoBateria() {
+        return tipoBateria;
     }
 }
