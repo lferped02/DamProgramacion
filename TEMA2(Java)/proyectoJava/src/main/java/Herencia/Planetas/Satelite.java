@@ -18,8 +18,8 @@ public class Satelite extends Astro {
     }
 
     @Override
-    public void muestra() {
-        System.out.println("--- Datos del Satélite ---");
+    public void muestraInformacion() {
+        System.out.println("Datos del Satélite.");
         System.out.println("Nombre: " + nombre + " | Pertenece a: " + planetaAlQuePertenece);
         System.out.println("Masa: " + masa + " | Distancia al planeta: " + distanciaMedia);
     }

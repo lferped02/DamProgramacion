@@ -15,7 +15,7 @@ public class Planeta extends Astro {
             satelites[contadorSatelites] = s;
             contadorSatelites++;
         } else {
-            System.out.println("Error: No se pueden agregar más satélites a este planeta.");
+            System.out.println("No se pueden agregar más satélites a este planeta.");
         }
     }
 
@@ -33,8 +33,8 @@ public class Planeta extends Astro {
     }
 
     @Override
-    public void muestra() {
-        System.out.println("--- Datos del Planeta ---");
+    public void muestraInformacion() {
+        System.out.println("Datos del Planeta.");
         System.out.println("Nombre: " + nombre + " | Masa: " + masa + " | Diámetro: " + diametroMedio);
         System.out.println("Rotación: " + periodoRotacion + "h | Traslación: " + periodoTraslacion + "h");
 

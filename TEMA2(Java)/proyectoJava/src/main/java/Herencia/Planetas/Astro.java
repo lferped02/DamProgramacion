@@ -89,5 +89,5 @@ public abstract class Astro {
         return Objects.hash(nombre, masa, distanciaMedia);
     }
 
-    public abstract void muestra();
+    public abstract void muestraInformacion();
 }
