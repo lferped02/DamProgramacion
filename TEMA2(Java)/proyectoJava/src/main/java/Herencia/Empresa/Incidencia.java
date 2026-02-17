@@ -3,37 +3,33 @@ package Herencia.Empresa;
 public class Incidencia {
     private int id;
     private String nombre;
-    private String descripcion;
     private String fechaRegistro;
     private String fechaCierre;
     private Estado estado;
     private Criticidad criticidad;
     private Dispositivo equipo;
-    private int diasTranscurridos;
+    private int diasTranscurridos; // Para urgencia sin LocalDate
 
-    public Incidencia(int id, String nombre, String desc, String fecha, Criticidad criticidad, Dispositivo equipo) {
+    public Incidencia(int id, String nombre, String fecha, Criticidad crit, Dispositivo eq) {
         this.id = id;
         this.nombre = nombre;
-        this.descripcion = desc;
         this.fechaRegistro = fecha;
         this.fechaCierre = null;
         this.estado = Estado.REGISTRADA;
-        this.criticidad = criticidad;
-        this.equipo = equipo;
+        this.criticidad = crit;
+        this.equipo = eq;
         this.diasTranscurridos = 0;
     }
 
-    public void setDiasTranscurridos(int dias) {
-        this.diasTranscurridos = dias;
+    public void setDiasTranscurridos(int d) {
+        this.diasTranscurridos = d;
     }
 
-    public boolean esUrgente() {
+    protected boolean esUrgente() {
         boolean urgente = false;
-
-        if (this.criticidad == Criticidad.CRITICA) {
-            urgente = true;
-        }
-
+        if (criticidad == Criticidad.CRITICA) urgente = true;
+        else if (criticidad == Criticidad.GRAVE && diasTranscurridos >= 7) urgente = true;
+        else if (criticidad == Criticidad.MEDIA && diasTranscurridos >= 30) urgente = true;
         return urgente;
     }
 

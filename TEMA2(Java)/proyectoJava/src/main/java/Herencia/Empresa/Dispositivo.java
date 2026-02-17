@@ -5,12 +5,14 @@ public class Dispositivo {
     private String mac;
     private String sistemaOperativo;
     private int pendientes;
+    private Usuario usuario;
 
-    public Dispositivo(String nombre, String mac, String sistemaOperativo) {
+    public Dispositivo(String nombre, String mac, String sistemaOperativo, Usuario usuario) {
         this.nombre = nombre;
         this.mac = mac;
         this.sistemaOperativo = sistemaOperativo;
         this.pendientes = 0;
+        this.usuario = usuario;
     }
 
     public String getNombre() {
@@ -29,6 +31,6 @@ public class Dispositivo {
 
     @Override
     public String toString() {
-        return nombre + " - " + mac + " : " + pendientes;
+        return nombre + " (" + usuario.getNombre() + ") - " + mac + " : " + pendientes;
     }
 }
