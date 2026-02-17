@@ -28,6 +28,46 @@ public abstract class Astro {
         this.nombre = nombre;
     }
 
+    public double getMasa() {
+        return masa;
+    }
+
+    public void setMasa(double masa) {
+        this.masa = masa;
+    }
+
+    public double getDiametroMedio() {
+        return diametroMedio;
+    }
+
+    public void setDiametroMedio(double diametroMedio) {
+        this.diametroMedio = diametroMedio;
+    }
+
+    public double getPeriodoRotacion() {
+        return periodoRotacion;
+    }
+
+    public void setPeriodoRotacion(double periodoRotacion) {
+        this.periodoRotacion = periodoRotacion;
+    }
+
+    public double getPeriodoTraslacion() {
+        return periodoTraslacion;
+    }
+
+    public void setPeriodoTraslacion(double periodoTraslacion) {
+        this.periodoTraslacion = periodoTraslacion;
+    }
+
+    public double getDistanciaMedia() {
+        return distanciaMedia;
+    }
+
+    public void setDistanciaMedia(double distanciaMedia) {
+        this.distanciaMedia = distanciaMedia;
+    }
+
     @Override
     public String toString() {
         return "Astro{" +
@@ -45,6 +85,11 @@ public abstract class Astro {
         return Double.compare(astro.masa, masa) == 0 &&
                 Double.compare(astro.distanciaMedia, distanciaMedia) == 0 &&
                 Objects.equals(nombre, astro.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, masa, distanciaMedia);
     }
 
     public abstract void muestra();
