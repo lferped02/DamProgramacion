@@ -79,12 +79,9 @@ public abstract class Astro {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Astro)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Astro astro = (Astro) o;
-        return Double.compare(astro.masa, masa) == 0 &&
-                Double.compare(astro.distanciaMedia, distanciaMedia) == 0 &&
-                Objects.equals(nombre, astro.nombre);
+        return Double.compare(masa, astro.masa) == 0 && Double.compare(distanciaMedia, astro.distanciaMedia) == 0 && Objects.equals(nombre, astro.nombre);
     }
 
     @Override
