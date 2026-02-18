@@ -3,37 +3,35 @@ package Herencia.Empresa;
 public class Dispositivo {
     private String nombre;
     private String mac;
-    private String sistemaOperativo;
-    private int pendientes;
-    private Usuario usuario;
+    private String so;
+    private int incidentesPendientes;
+    private Usuario usuario; // Relación con Usuario
 
-    public Dispositivo(String nombre, String mac, String sistemaOperativo, Usuario usuario) {
+    public Dispositivo(String nombre, String mac, String so, Usuario usuario) {
         this.nombre = nombre;
         this.mac = mac;
-        this.sistemaOperativo = sistemaOperativo;
-        this.pendientes = 0;
+        this.so = so;
         this.usuario = usuario;
+        this.incidentesPendientes = 0;
     }
 
-    public String getNombre() {
+    public String getNombre() { return nombre; }
 
-        return nombre;
-    }
-
-    public void setPendientes(int pendientes) {
-
-        this.pendientes = pendientes;
+    public void incrementarPendientes() {
+        this.incidentesPendientes++;
     }
 
     @Override
     public boolean equals(Object obj) {
-        Dispositivo otro = (Dispositivo) obj;
-        return this.mac.equalsIgnoreCase(otro.mac);
+        if (obj instanceof Dispositivo) {
+            Dispositivo otro = (Dispositivo) obj;
+            return this.mac.equalsIgnoreCase(otro.mac);
+        }
+        return false;
     }
 
     @Override
     public String toString() {
-
-        return nombre + " (" + usuario.getNombre() + ") - " + mac + " : " + pendientes;
+        return nombre + " (" + usuario.getNombre() + ") - " + mac + " : " + incidentesPendientes;
     }
 }

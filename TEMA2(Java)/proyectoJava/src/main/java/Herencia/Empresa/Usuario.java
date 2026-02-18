@@ -11,16 +11,13 @@ public class Usuario {
         this.departamento = departamento;
     }
 
-    public String getNombre() {
-
-        return nombre;
-    }
+    public String getNombre() { return nombre; }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Usuario otro = (Usuario) obj;
-        return this.dni.equalsIgnoreCase(otro.dni);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Usuario)) return false;
+        Usuario usuario = (Usuario) o;
+        return dni.equals(usuario.dni);
     }
 }

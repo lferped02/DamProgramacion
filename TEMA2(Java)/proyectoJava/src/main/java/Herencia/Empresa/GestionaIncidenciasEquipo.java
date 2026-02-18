@@ -1,53 +1,56 @@
 package Herencia.Empresa;
 
 public class GestionaIncidenciasEquipo {
-    private static Incidencia[] listaIncidencias = new Incidencia[100];
-    private static int contador = 0;
+    private Incidencia[] misIncidencias = new Incidencia[10];
+    private int total = 0;
 
-    public static void main(String[] args) {
-        Usuario usuario1 = new Usuario("123", "Juan", "IT");
-        Usuario usuario2 = new Usuario("456", "Maria", "Ventas");
+    public void agregarIncidencia(Incidencia inc) {
+        if (total < misIncidencias.length) {
+            misIncidencias[total] = inc;
+            total++;
+        }
+    }
 
-        Dispositivo dispositivo1 = new Dispositivo("pcJuan", "AA:11", "Win", usuario1);
-        Dispositivo dispositivo2 = new Dispositivo("pcMaria", "BB:22", "Linux", usuario2);
-        Dispositivo dispositivo3 = new Dispositivo("pcAdmin", "CC:33", "Win", usuario1);
-        Dispositivo dispositivo4 = new Dispositivo("pcVacio", "DD:44", "Win", usuario2);
-
-        insertarIncidencia(new Incidencia(1, "Virus", "10/02", Criticidad.CRITICA, dispositivo1));
-        insertarIncidencia(new Incidencia(2, "Lento", "11/02", Criticidad.MEDIA, dispositivo1));
-        dispositivo1.setPendientes(2);
-
-        insertarIncidencia(new Incidencia(3, "Disco", "01/01", Criticidad.GRAVE, dispositivo2));
-        listaIncidencias[contador-1].setDiasTranscurridos(50);
-        dispositivo2.setPendientes(1);
-
-        insertarIncidencia(new Incidencia(4, "RAM", "12/02", Criticidad.LEVE, dispositivo3));
-        dispositivo3.setPendientes(1);
-
+    public void imprimirTodas() {
         System.out.println("--- TODAS LAS INCIDENCIAS ---");
-        imprimirTodas();
-
-        System.out.println("--- SOLO URGENTES ---");
-        imprimirUrgentes();
-    }
-
-    public static void insertarIncidencia(Incidencia i) {
-        if (contador < listaIncidencias.length) {
-            listaIncidencias[contador++] = i;
+        for (int i = 0; i < total; i++) {
+            System.out.println(misIncidencias[i]);
         }
     }
 
-    public static void imprimirTodas() {
-        for (int i = 0; i < contador; i++) {
-            System.out.println(listaIncidencias[i]);
-        }
-    }
-
-    public static void imprimirUrgentes() {
-        for (int i = 0; i < contador; i++) {
-            if (listaIncidencias[i].esUrgente()) {
-                System.out.println(listaIncidencias[i]);
+    public void imprimirUrgentes() {
+        System.out.println("--- INCIDENCIAS URGENTES ---");
+        for (int i = 0; i < total; i++) {
+            if (misIncidencias[i].esUrgente()) {
+                System.out.println(misIncidencias[i]);
             }
         }
+    }
+
+    public static void main(String[] args) {
+        GestionaIncidenciasEquipo app = new GestionaIncidenciasEquipo();
+
+        Usuario u1 = new Usuario("12345678A", "Juan", "IT");
+        Usuario u2 = new Usuario("87654321B", "Ana", "Ventas");
+
+        Dispositivo d1 = new Dispositivo("pcJuan", "3C:D9:2B:88:99:AA", "Win11", u1);
+        Dispositivo d2 = new Dispositivo("pcAna", "AA:BB:CC:DD:EE:01", "Ubuntu", u2);
+        Dispositivo d3 = new Dispositivo("pcLuis", "11:22:33:44:55:66", "macOS", u1);
+        Dispositivo d4 = new Dispositivo("pcMarta", "FF:EE:DD:CC:BB:AA", "Win10", u2);
+
+        app.agregarIncidencia(new Incidencia(1, "RAM", "Falla", Criticidad.CRITICA, d1));
+        app.agregarIncidencia(new Incidencia(2, "JDK", "Update", Criticidad.LEVE, d1));
+        app.agregarIncidencia(new Incidencia(3, "Virus", "Malware", Criticidad.GRAVE, d2));
+        app.agregarIncidencia(new Incidencia(4, "Lento", "Limpieza", Criticidad.MEDIA, d3));
+
+        System.out.println("LISTADO TOTAL:");
+        app.imprimirTodas();
+
+        System.out.println("\nINCIDENCIAS URGENTES:");
+        app.imprimirUrgentes();
+
+        System.out.println("\nESTADO DE EQUIPOS:");
+        System.out.println(d1);
+        System.out.println(d4);
     }
 }
