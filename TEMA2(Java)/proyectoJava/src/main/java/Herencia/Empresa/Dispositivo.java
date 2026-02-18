@@ -16,10 +16,12 @@ public class Dispositivo {
     }
 
     public String getNombre() {
+
         return nombre;
     }
 
     public void setPendientes(int pendientes) {
+
         this.pendientes = pendientes;
     }
 
@@ -31,6 +33,7 @@ public class Dispositivo {
 
     @Override
     public String toString() {
+
         return nombre + " (" + usuario.getNombre() + ") - " + mac + " : " + pendientes;
     }
 }

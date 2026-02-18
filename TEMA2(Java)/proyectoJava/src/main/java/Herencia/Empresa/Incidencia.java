@@ -8,7 +8,7 @@ public class Incidencia {
     private Estado estado;
     private Criticidad criticidad;
     private Dispositivo equipo;
-    private int diasTranscurridos; // Para urgencia sin LocalDate
+    private int diasTranscurridos;
 
     public Incidencia(int id, String nombre, String fecha, Criticidad crit, Dispositivo eq) {
         this.id = id;
@@ -22,6 +22,7 @@ public class Incidencia {
     }
 
     public void setDiasTranscurridos(int d) {
+
         this.diasTranscurridos = d;
     }
 
