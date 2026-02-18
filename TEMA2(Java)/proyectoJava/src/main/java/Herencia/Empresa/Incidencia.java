@@ -10,14 +10,14 @@ public class Incidencia {
     private Dispositivo equipo;
     private int diasTranscurridos;
 
-    public Incidencia(int id, String nombre, String fecha, Criticidad crit, Dispositivo eq) {
+    public Incidencia(int id, String nombre, String fecha, Criticidad criticidad, Dispositivo equipo) {
         this.id = id;
         this.nombre = nombre;
         this.fechaRegistro = fecha;
         this.fechaCierre = null;
         this.estado = Estado.REGISTRADA;
-        this.criticidad = crit;
-        this.equipo = eq;
+        this.criticidad = criticidad;
+        this.equipo = equipo;
         this.diasTranscurridos = 0;
     }
 
