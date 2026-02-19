@@ -1,10 +1,8 @@
 package Herencia.TerraNova;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 public class MisionExploracion extends Mision {
-
     private String destino;
     private int tripulacion;
 
@@ -16,7 +14,13 @@ public class MisionExploracion extends Mision {
 
     @Override
     public boolean esMisionRiesgo() {
-        long dias = ChronoUnit.DAYS.between(LocalDate.now(), fechaLanzamiento);
-        return destino.equalsIgnoreCase("Marte") || dias <= 7;
+        boolean destinoMarte = destino.equalsIgnoreCase("Marte");
+        boolean fechaProxima = fechaLanzamiento.isBefore(LocalDate.now().plusDays(7));
+        return destinoMarte || fechaProxima;
+    }
+
+    @Override
+    public String toString() {
+        return "[Exploración] " + super.toString();
     }
 }
