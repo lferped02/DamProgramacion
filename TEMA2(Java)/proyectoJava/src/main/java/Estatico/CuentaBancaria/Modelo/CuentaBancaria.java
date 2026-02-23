@@ -1,41 +1,56 @@
 package Estatico.CuentaBancaria.Modelo;
 
-import java.time.LocalDate;
+public abstract class CuentaBancaria {
+    protected String iban;
+    protected double saldo;
+    protected static final double INTERES_ANUAL_BASICO = 0.02;
 
-public class CuentaBancaria {
-    private static int contadorId = 1;
-    private int id;
-    private double saldo;
-    private LocalDate fechaApertura;
-    private String iban;
-    private Cliente titular;
-    private Cliente autorizado;
-
-    public CuentaBancaria(double saldo, String iban, Cliente titular, Cliente autorizado) {
-        this.id = contadorId++;
-        this.saldo = saldo;
-        this.fechaApertura = LocalDate.now();
+    public CuentaBancaria(String iban, double saldo) {
         this.iban = iban;
-        this.titular = titular;
-        this.autorizado = autorizado;
+        this.saldo = saldo;
     }
 
-    // Getters para comprobación
-    public int getId() {
-        return id;
+    public String getIban() {
+        return iban;
     }
 
-    public Cliente getTitular() {
-        return titular;
+    public double getSaldo() {
+
+        return saldo; }
+
+    private void añadir(double cantidad) {
+        this.saldo += cantidad;
     }
 
-    public Cliente getAutorizado() {
-        return autorizado;
+    public void ingresar(double cantidad) {
+        if (cantidad > 0) añadir(cantidad);
     }
+
+    public void retirar(double cantidad) {
+        if (cantidad > 0 && cantidad <= saldo) {
+            añadir(-cantidad);
+        }
+    }
+
+    public void traspaso(CuentaBancaria destino, double cantidad) {
+        if (this.saldo >= cantidad) {
+            this.retirar(cantidad);
+            destino.ingresar(cantidad);
+        }
+    }
+
+    public abstract void calcularIntereses();
 
     @Override
     public String toString() {
-        String aut = (autorizado != null) ? autorizado.toString() : "Ninguno";
-        return "ID: " + id + " | IBAN: " + iban + " | Titular: " + titular + " | Autorizado: " + aut;
+        return "IBAN: " + iban + " | Saldo: " + saldo + "€";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        CuentaBancaria otra = (CuentaBancaria) obj;
+        return iban.equals(otra.iban);
     }
 }

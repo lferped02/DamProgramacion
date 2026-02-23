@@ -1,79 +1,44 @@
 package Estatico.TiendaAnimales.Modelo;
 
-import java.time.LocalDate;
-import java.util.Objects;
-
 public abstract class Mascota {
-    public String nombre;
-    public int edad;
-    public String estado;
-    public LocalDate fechaNacimiento;
+    protected String nombre;
+    protected int edad;
+    protected String estado;
+    protected String fechaNacimiento;
+    protected double peso; // Necesario para calcular el más pesado
 
-    public Mascota(String nombre, int edad, String estado, LocalDate fechaNacimiento) {
+    public Mascota(String nombre, int edad, String estado, String fechaNacimiento, double peso) {
         this.nombre = nombre;
         this.edad = edad;
         this.estado = estado;
         this.fechaNacimiento = fechaNacimiento;
+        this.peso = peso;
     }
 
-    // Getters & Setters
+    public abstract void muestra();
+    public abstract boolean habla();
+
+    public void cumpleaños() { this.edad++; }
+    public void morir() { this.estado = "Fallecido"; }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + " (" + this.getClass().getSimpleName() + ")";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Mascota m = (Mascota) obj;
+        return edad == m.edad && nombre.equals(m.nombre);
+    }
+
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public double getPeso() {
+        return peso;
     }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Mascota mascota = (Mascota) o;
-        return edad == mascota.edad && Objects.equals(nombre, mascota.nombre);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nombre, edad);
-    }
-
-    @Override
-    public String toString() {
-        return "Mascota{" +
-                "nombre='" + getNombre() + '\'' +
-                ", edad=" + getEdad() +
-                ", estado='" + getEstado() + '\'' +
-                ", fechaNacimiento=" + getFechaNacimiento() +
-                '}';
-    }
-    abstract void muestra();
-
-    public void cumpleanio(){
-    }
-
-    abstract boolean habla();
 }
