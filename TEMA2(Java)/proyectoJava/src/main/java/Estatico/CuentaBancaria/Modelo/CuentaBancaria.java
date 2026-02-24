@@ -3,11 +3,11 @@ package Estatico.CuentaBancaria.Modelo;
 public abstract class CuentaBancaria {
     protected String iban;
     protected double saldo;
-    protected static final double INTERES_ANUAL_BASICO = 0.02;
+    protected static final double interesAnualBasico = 0.02; // 2%
 
-    public CuentaBancaria(String iban, double saldo) {
+    public CuentaBancaria(String iban, double saldoInicial) {
         this.iban = iban;
-        this.saldo = saldo;
+        this.saldo = saldoInicial;
     }
 
     public String getIban() {
@@ -15,42 +15,51 @@ public abstract class CuentaBancaria {
     }
 
     public double getSaldo() {
+        return saldo;
+    }
 
-        return saldo; }
-
-    private void añadir(double cantidad) {
+    private void anadir(double cantidad) {
         this.saldo += cantidad;
     }
 
     public void ingresar(double cantidad) {
-        if (cantidad > 0) añadir(cantidad);
-    }
-
-    public void retirar(double cantidad) {
-        if (cantidad > 0 && cantidad <= saldo) {
-            añadir(-cantidad);
+        if (cantidad > 0) {
+            anadir(cantidad);
         }
     }
 
-    public void traspaso(CuentaBancaria destino, double cantidad) {
-        if (this.saldo >= cantidad) {
-            this.retirar(cantidad);
+    public boolean retirar(double cantidad) {
+        if (cantidad > 0 && saldo >= cantidad) {
+            anadir(-cantidad);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean traspasar(CuentaBancaria destino, double cantidad) {
+        if (this.retirar(cantidad)) {
             destino.ingresar(cantidad);
+            return true;
         }
+        return false;
     }
 
     public abstract void calcularIntereses();
 
     @Override
     public String toString() {
-        return "IBAN: " + iban + " | Saldo: " + saldo + "€";
+        return "CuentaBancaria{" +
+                "IBAN='" + iban + '\'' +
+                ", saldo=" + saldo +
+                '}';
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        CuentaBancaria otra = (CuentaBancaria) obj;
-        return iban.equals(otra.iban);
+
+        CuentaBancaria cuenta = (CuentaBancaria) obj;
+        return iban.equals(cuenta.iban);
     }
 }

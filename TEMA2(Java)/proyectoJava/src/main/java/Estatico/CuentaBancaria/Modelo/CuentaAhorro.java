@@ -1,20 +1,22 @@
 package Estatico.CuentaBancaria.Modelo;
 
 public class CuentaAhorro extends CuentaBancaria {
-    private static final double SALDO_MINIMO = 1000.0;
+    private static final double saldoMinimo = 3000.0;
 
-    public CuentaAhorro(String iban, double saldo) {
-        super(iban, saldo);
+    public CuentaAhorro(String iban, double saldoInicial) {
+        super(iban, saldoInicial);
     }
 
     @Override
     public void calcularIntereses() {
         double interesAplicado;
-        if (this.saldo < SALDO_MINIMO) {
-            interesAplicado = INTERES_ANUAL_BASICO / 2;
+
+        if (saldo < saldoMinimo) {
+            interesAplicado = interesAnualBasico / 2;
         } else {
-            interesAplicado = INTERES_ANUAL_BASICO * 2;
+            interesAplicado = interesAnualBasico * 2;
         }
-        this.ingresar(this.saldo * interesAplicado);
+
+        saldo += saldo * interesAplicado;
     }
 }

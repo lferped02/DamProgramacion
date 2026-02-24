@@ -1,26 +1,21 @@
 package Estatico.CuentaBancaria.Controlador;
 
-import Estatico.CuentaBancaria.Modelo.Cliente;
+import Estatico.CuentaBancaria.Modelo.CuentaAhorro;
 import Estatico.CuentaBancaria.Modelo.CuentaBancaria;
+import Estatico.CuentaBancaria.Modelo.CuentaCorriente;
 
 public class GestionaCuentas {
     public static void main(String[] args) {
-        Cliente cliente1 = new Cliente("Ana", "García", "12345678X");
-        Cliente cliente2 = new Cliente("Luis", "Pérez", "87654321Y");
-        Cliente cliente3 = new Cliente("Marta", "López", "55555555Z");
+        CuentaBancaria c1 = new CuentaCorriente("ES123", 1000);
+        CuentaBancaria c2 = new CuentaAhorro("ES456", 5000);
 
-        CuentaBancaria cuenta1 = new CuentaBancaria(1500.0, "ES210001...", cliente1, cliente2);
-        CuentaBancaria cuenta2 = new CuentaBancaria(3000.5, "ES210002...", cliente2, null);
-        CuentaBancaria cuenta3 = new CuentaBancaria(50.0,   "ES210003...", cliente3, cliente1);
+        c1.ingresar(500);
+        c1.traspasar(c2, 300);
 
-        System.out.println("Listado de Cuentas.");
-        System.out.println(cuenta1);
-        System.out.println(cuenta2);
-        System.out.println(cuenta3);
+        c1.calcularIntereses();
+        c2.calcularIntereses();
 
-        System.out.println("Comprobación de autoincremento:");
-        if (cuenta3.getId() > cuenta1.getId()) {
-            System.out.println("Éxito: El identificador se ha incrementado correctamente.");
-        }
+        System.out.println(c1);
+        System.out.println(c2);
     }
 }
