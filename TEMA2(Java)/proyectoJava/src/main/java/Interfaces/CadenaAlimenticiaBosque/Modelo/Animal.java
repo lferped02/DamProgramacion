@@ -1,16 +1,14 @@
 package Interfaces.CadenaAlimenticiaBosque.Modelo;
 
-abstract class Animal {
+public abstract class Animal {
+    private String especie;
+    private String familia;
+    private String habitat;
+    private Animal[] come = new Animal[10];
+    private Animal[] esComidoPor = new Animal[10];
 
-    protected String especie;
-    protected String familia;
-    protected String habitat;
-
-    protected Animal[] come = new Animal[10];
-    protected Animal[] esComidoPor = new Animal[10];
-
-    protected int numeroCome = 0;
-    protected int numeroEsComido = 0;
+    private int numeroCome = 0;
+    private int numeroEsComidoPor = 0;
 
     public Animal(String especie, String familia, String habitat) {
         this.especie = especie;
@@ -22,50 +20,32 @@ abstract class Animal {
         return especie;
     }
 
-    public String getFamilia() {
-        return familia;
-    }
-
-    public void addCome(Animal a) {
+    public void agregarPresa(Animal a) {
         if (numeroCome < 10) {
             come[numeroCome++] = a;
         }
     }
 
-    public void addEsComidoPor(Animal a) {
-        if (numeroEsComido < 10) {
-            esComidoPor[numeroEsComido++] = a;
+    public void agregarDepredador(Animal a) {
+        if (numeroEsComidoPor < 10) {
+            esComidoPor[numeroEsComidoPor++] = a;
         }
     }
 
-    public boolean atacar(Animal a) {
-        if (this.especie.equals(a.especie)) return false;
-
-        for (int i = 0; i < numeroCome; i++) {
-            if (come[i] == a) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public abstract boolean huir(Animal a);
-
-    public Animal[] getCome() {
+    public Animal[] getPresas() {
         return come;
     }
 
-    public int getNumCome() {
-        return numeroCome;
-    }
-
-    public Animal[] getEsComidoPor() {
+    public Animal[] getDepredadores() {
         return esComidoPor;
     }
 
-    public int getNumeroEsComido() {
-        return numeroEsComido;
+    protected boolean mismaEspecie(Animal a) {
+        return this.getClass().equals(a.getClass());
     }
+
+    public abstract boolean atacar(Animal a);
+    public abstract boolean huir(Animal a);
 
     @Override
     public String toString() {
