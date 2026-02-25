@@ -1,7 +1,7 @@
 package Estatico.FactoriaDeCoches.Modelo;
 
 public abstract class Robot {
-    private static int idCounter = 1;
+    private static int contadorId = 1;
     protected int id;
     protected String modelo;
     protected int bateria;
@@ -10,7 +10,7 @@ public abstract class Robot {
     protected String descripcion;
 
     public Robot(String modelo, int bateria, String estado, String combustible, String descripcion) {
-        this.id = idCounter++;
+        this.id = contadorId++;
         this.modelo = modelo;
         this.bateria = bateria;
         this.estado = estado;
@@ -23,11 +23,15 @@ public abstract class Robot {
     }
 
     public abstract String ejecutarTarea();
-
     public abstract boolean recargar();
 
     @Override
     public String toString() {
-        return "ID: " + id + ", Modelo: " + modelo + ", Estado: " + estado + ", Batería: " + bateria;
+        return "Robot{" +
+                "id=" + id +
+                ", modelo='" + modelo + '\'' +
+                ", bateria=" + bateria +
+                ", estado='" + estado + '\'' +
+                '}';
     }
 }

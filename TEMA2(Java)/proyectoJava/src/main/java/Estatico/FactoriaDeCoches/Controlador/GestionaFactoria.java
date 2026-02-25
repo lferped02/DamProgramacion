@@ -46,9 +46,9 @@ public class GestionaFactoria {
         factoria.agregarRobot(robotPintor);
         factoria.agregarRobot(robotEnsamblador);
 
-        DispositivoWifi sensor = new SensorTemperatura("S1", "MAC123", "ON_CONECTADO", "hace 3 meses", 25);
-        DispositivoWifi camara = new CamaraSeguridad("C1", "MAC456", "ON_SINWIFI", "hace 2 semanas");
-        DispositivoWifi puerta = new PuertaAutomatica("P1", "MAC789", "ALERTA", "hace 1 mes");
+        DispositivoWifi sensor = new SensorTemperatura("Sensor1", "MAC123", "ON_CONECTADO", "hace 3 meses", 25);
+        DispositivoWifi camara = new CamaraSeguridad("Cámara1", "MAC456", "ON_SINWIFI", "hace 2 semanas");
+        DispositivoWifi puerta = new PuertaAutomatica("Puerta1", "MAC789", "ALERTA", "hace 1 mes");
 
         factoria.agregarDispositivo(sensor);
         factoria.agregarDispositivo(camara);
