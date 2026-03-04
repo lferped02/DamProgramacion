@@ -4,7 +4,7 @@ public class GrupoAlumnos {
     private String[] nombres;
     private String[] apellidos;
 
-    public GrupoAlumnos(String[] nombre, String[] apellidos) throws NullPointerException {
+    public GrupoAlumnos(String[] nombre, String[] apellidos) throws NullPointerException, ClassNotFoundException {
         this.setNombres(nombre);
         this.setApellidos(apellidos);
     }
@@ -30,9 +30,9 @@ public class GrupoAlumnos {
         return apellidos;
     }
 
-    public void setApellidos(String[] apellidos) {
+    public void setApellidos(String[] apellidos) throws ClassNotFoundException {
         if(apellidos.length > 20){
-            throw new NullPointerException("Llega más de 20 apellidos.");
+            throw new ClassNotFoundException("Llega más de 20 apellidos.");
         }
         this.apellidos = apellidos;
     }

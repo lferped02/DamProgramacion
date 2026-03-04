@@ -4,8 +4,8 @@ public class GestionaExcepciones {
     public static void main(String[] args) {
         try {
             GrupoAlumnos grupo = new GrupoAlumnos(new String[8], new String[8]);
-        } catch (NullPointerException e) {
-            System.out.println("Ha ocurrido una excepción: "+e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         } finally {
             System.out.println("Aquí entro siempre soy un finally.");
         }
