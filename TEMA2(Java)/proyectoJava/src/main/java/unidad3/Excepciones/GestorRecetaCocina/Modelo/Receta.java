@@ -22,28 +22,31 @@ public class Receta {
         return nombre;
     }
 
-    public void agregarIngrediente(String ingrediente, double cantidad) {
-        if (numeroIngredientes < 30) {
+    public boolean agregarIngrediente(String ingrediente, double cantidad) {
+        if (numeroIngredientes < ingredientes.length) {
+            return false;
+        } else {
             ingredientes[numeroIngredientes] = ingrediente;
             cantidades[numeroIngredientes] = cantidad;
             numeroIngredientes++;
+            return true;
         }
     }
 
-    public void cocinar(int comensales) throws CocinaException {
+    public double[] cocinar(int comensales) throws CocinaException {
+        double[] tabla = new double[30];
         if (comensales <= 0) {
-            System.out.println("Número de comensales incorrecto: " + comensales);
-            return;
-        }
-        if (comensales > 1000) {
+            throw new CocinaException("Número de comensales incorrecto: " + comensales);
+        } else if (comensales > 1000) {
             throw new CocinaException("El número de comensales es demasiado alto");
-        }
-        System.out.println("\nReceta: " + nombre);
-        System.out.println("Para " + comensales + " comensales:");
+        } else {
+            System.out.println("\nReceta: " + nombre + " para " + comensales + " comensales:");
 
-        for (int i = 0; i < numeroIngredientes; i++) {
-            double cantidadTotal = cantidades[i] * comensales;
-            System.out.println(ingredientes[i] + " : " + cantidadTotal);
+            for (int i = 0; i < numeroIngredientes; i++) {
+                double cantidadTotal = cantidades[i] * comensales;
+                System.out.println(ingredientes[i] + " : " + cantidadTotal);
+            }
         }
+        return tabla;
     }
 }

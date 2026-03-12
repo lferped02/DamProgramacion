@@ -4,24 +4,39 @@ import unidad3.Excepciones.GestorRecetaCocina.Excepcion.CocinaException;
 
 public class Recetario {
     private Receta[] recetas;
-    private int total;
+    private int numeroRecetas;
 
     public Recetario() {
-        recetas = new Receta[50];
-        total = 0;
+        this.recetas = new Receta[50];
+        this.numeroRecetas = 0;
     }
 
-    public void agregarReceta(Receta receta) {
-        recetas[total] = receta;
-        total++;
+    public boolean agregarReceta(Receta receta) {
+        if (numeroRecetas >= recetas.length) {
+            return false;
+        } else {
+            recetas[numeroRecetas] = receta;
+            numeroRecetas++;
+            return true;
+        }
     }
 
     public Receta buscar(String nombre) throws CocinaException {
-        for (int i = 0; i < total; i++) {
+        boolean encontrado = false;
+        int i = 0;
+        Receta receta = null;
+
+        while (!encontrado && i < numeroRecetas) {
             if (recetas[i].getNombre().equalsIgnoreCase(nombre)) {
-                return recetas[i];
+                encontrado = true;
+                receta = recetas[i];
+            } else {
+                i++;
             }
         }
-        throw new CocinaException("La receta '" + nombre + "' no existe en el recetario");
+        if (!encontrado) {
+            throw new CocinaException("\nLa receta " + nombre + " no existe en el recetario.");
+        }
+        return receta;
     }
 }
