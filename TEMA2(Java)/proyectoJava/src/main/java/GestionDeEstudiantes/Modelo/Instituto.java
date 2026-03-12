@@ -1,5 +1,7 @@
 package unidad4.Colecciones.Listas.GestionDeEstudiantes.Modelo;
 
+import unidad4.Colecciones.Listas.GestionDeEstudiantes.Excepciones.GrupoNoEncontradoException;
+
 import java.util.ArrayList;
 
 public class Instituto {
@@ -13,27 +15,13 @@ public class Instituto {
         grupos.add(g);
     }
 
-    public ArrayList<Grupo> getGrupos() {
-        return grupos;
-    }
-
-    public Grupo buscarGrupo(String descripcion) {
+    public Grupo buscarGrupo(String descripcion) throws GrupoNoEncontradoException {
         for (Grupo g : grupos) {
             if (g.getDescripcion().equalsIgnoreCase(descripcion)) {
                 return g;
             }
         }
-        return null;
-    }
+        throw new GrupoNoEncontradoException("Grupo no encontrado");
 
-    public Estudiante buscarEstudiante(String id) {
-        for (Grupo g : grupos) {
-            for (Estudiante e : g.getEstudiantes()) {
-                if (e.getId().equals(id)) {
-                    return e;
-                }
-            }
-        }
-        return null;
     }
 }
