@@ -1,6 +1,6 @@
-package unidad4.Listas.Biblioteca.Excepciones;
+package unidad4.Colecciones.Listas.Biblioteca.Excepciones;
 
-public class BibliotecaException extends Exception {
+public class BibliotecaException extends RuntimeException {
     public BibliotecaException(String message) {
         super(message);
     }

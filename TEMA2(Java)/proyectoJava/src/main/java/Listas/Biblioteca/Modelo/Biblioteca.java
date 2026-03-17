@@ -4,46 +4,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca {
-    List<Libro> inventario = new ArrayList<Libro>();
-
-    public Biblioteca (List<Libro> inventario){
-        this.inventario = inventario;
+    private List<Libro> libros;
+    public Biblioteca() {
+        libros = new ArrayList<>();
     }
 
-    public List<Libro> getInventario() {
-        return inventario;
+    public void agregarLibro(Libro libro) {
+        libros.add(libro);
     }
 
-    public void setInventario(List<Libro> inventario) {
-        this.inventario = inventario;
+    public Libro buscarLibro(String texto) {
+        for (Libro l : libros) {
+            if (l.getTitulo().equalsIgnoreCase(texto) ||
+                    l.getAutor().equalsIgnoreCase(texto)) {
+                return l;
+            }
+        }
+        return null;
     }
 
-    public void agregarNuevoLibro (Libro libro){
-        System.out.println("Agregando nuevo libro en el inventario.");
-        if (!inventario.contains(libro)){
-            inventario.add(libro);
-            System.out.println("Este libro está agregado correctamente.");
+    public void prestarLibro(String texto) throws BibliotecaException {
+        Libro l = buscarLibro(texto);
+        if (l == null) {
+            throw new BibliotecaException("El libro no está en el inventario.");
+        }
+        l.prestar();
+    }
+
+    public void devolverLibro(String texto) throws BibliotecaException {
+        Libro l = buscarLibro(texto);
+        if (l == null) {
+            throw new BibliotecaException("El libro no está en el inventario.");
+        }
+        l.devolver();
+    }
+
+    public void mostrarLibros() {
+        for (Libro l : libros) {
+            System.out.println(l);
+        }
+    }
+
+    public void mostrarDetalle(String texto) {
+        Libro l = buscarLibro(texto);
+        if (l != null) {
+            l.mostrarInfo();
         } else {
-            System.out.println("El libro está registrado en el inventario.");
-        }
-    }
-
-    public void prestarEjemplar (Libro libro){
-        if(libro.getEstadoLibro() == Estado.LIBRE){
-            System.out.println("Este libro está siendo prestado.");
-        } else {
-            System.out.println("EL libro está prestado.");
-        }
-    }
-
-    public void devolverEjemplar (Libro libro){
-        if (libro.getEstadoLibro() == Estado.LIBRE){
-            System.out.println("Este libro esta siendo devuelto.");
-        }
-    }
-    public void mostrarInventario(){
-        for (Libro libro: inventario){
-            System.out.println(libro);
+            System.out.println("Libro no encontrado.");
         }
     }
 }
