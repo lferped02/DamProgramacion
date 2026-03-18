@@ -1,5 +1,7 @@
 package unidad4.Listas.Biblioteca.Modelo;
 
+import unidad4.Listas.Biblioteca.Excepciones.BibliotecaException;
+
 import java.util.ArrayList;
 import java.util.List;
 

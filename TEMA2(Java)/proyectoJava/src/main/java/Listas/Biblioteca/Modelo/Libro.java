@@ -1,6 +1,6 @@
 package unidad4.Listas.Biblioteca.Modelo;
 
-import unidad4.Colecciones.Listas.Biblioteca.Excepciones.BibliotecaException;
+import unidad4.Listas.Biblioteca.Excepciones.BibliotecaException;
 
 public class Libro {
     private String titulo;
