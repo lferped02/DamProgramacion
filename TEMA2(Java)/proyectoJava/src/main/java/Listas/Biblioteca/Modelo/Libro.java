@@ -7,35 +7,40 @@ public class Libro {
     private String autor;
     private String genero;
     private int anio;
-    private int ejemplaresDisponibles;
-    private int ejemplaresPrestados;
+    private Estado estado;
 
-    public Libro(String titulo, String autor, String genero, int anio, int cantidad) {
+    public Libro(String titulo, String autor, String genero, int anio) {
         this.titulo = titulo;
         this.autor = autor;
         this.genero = genero;
         this.anio = anio;
-        this.ejemplaresDisponibles = cantidad;
-        this.ejemplaresPrestados = 0;
+        this.estado = Estado.LIBRE;
     }
 
-    public String getTitulo() { return titulo; }
-    public String getAutor() { return autor; }
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
 
     public void prestar() throws BibliotecaException {
-        if (ejemplaresDisponibles <= 0) {
-            throw new BibliotecaException("No hay ejemplares disponibles para prestar.");
+        if (estado == Estado.PRESTADO) {
+            throw new BibliotecaException("El libro ya está prestado.");
         }
-        ejemplaresDisponibles--;
-        ejemplaresPrestados++;
+        estado = Estado.PRESTADO;
     }
 
     public void devolver() throws BibliotecaException {
-        if (ejemplaresPrestados <= 0) {
-            throw new BibliotecaException("No hay ejemplares prestados para devolver.");
+        if (estado == Estado.LIBRE) {
+            throw new BibliotecaException("El libro ya está disponible.");
         }
-        ejemplaresDisponibles++;
-        ejemplaresPrestados--;
+        estado = Estado.LIBRE;
     }
 
     public void mostrarInfo() {
@@ -43,12 +48,11 @@ public class Libro {
         System.out.println("Autor: " + autor);
         System.out.println("Género: " + genero);
         System.out.println("Año: " + anio);
-        System.out.println("Disponibles: " + ejemplaresDisponibles);
-        System.out.println("Prestados: " + ejemplaresPrestados);
+        System.out.println("Estado: " + estado);
     }
 
     @Override
     public String toString() {
-        return titulo + " - " + autor;
+        return titulo + " - " + autor + " (" + estado + ")";
     }
 }

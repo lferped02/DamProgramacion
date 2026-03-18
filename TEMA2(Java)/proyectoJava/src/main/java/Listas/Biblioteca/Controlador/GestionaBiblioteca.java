@@ -1,6 +1,5 @@
 package unidad4.Listas.Biblioteca.Controlador;
 
-
 import unidad4.Listas.Biblioteca.Excepciones.BibliotecaException;
 import unidad4.Listas.Biblioteca.Modelo.Biblioteca;
 import unidad4.Listas.Biblioteca.Modelo.Libro;
@@ -14,32 +13,34 @@ public class GestionaBiblioteca {
         int opcion;
 
         do {
-            System.out.println("\n1. Agregar libro");
-            System.out.println("2. Prestar libro");
-            System.out.println("3. Devolver libro");
-            System.out.println("4. Mostrar libros");
-            System.out.println("5. Mostrar detalle");
-            System.out.println("6. Buscar libro");
-            System.out.println("7. Salir");
-            System.out.print("Opción: ");
+            System.out.println("\n1. Agregar un nuevo libro al inventario.");
+            System.out.println("2. Prestar un ejemplar de un libro.");
+            System.out.println("3. Devolver un ejemplar prestado.");
+            System.out.println("4. Mostrar todos los libros een el inventario.");
+            System.out.println("5. Mostrar información de un libro.");
+            System.out.println("6. Buscar libro.");
+            System.out.println("7. Salir del programa.");
+            System.out.print("Introduce una opción: ");
 
             try {
                 opcion = Integer.parseInt(scanner.nextLine());
 
                 switch (opcion) {
+
                     case 1:
                         System.out.print("Título: ");
                         String titulo = scanner.nextLine();
+
                         System.out.print("Autor: ");
                         String autor = scanner.nextLine();
+
                         System.out.print("Género: ");
                         String genero = scanner.nextLine();
+
                         System.out.print("Año: ");
                         int anio = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Cantidad: ");
-                        int cantidad = Integer.parseInt(scanner.nextLine());
 
-                        biblioteca.agregarLibro(new Libro(titulo, autor, genero, anio, cantidad));
+                        biblioteca.agregarLibro(new Libro(titulo, autor, genero, anio));
                         break;
 
                     case 2:
@@ -64,6 +65,7 @@ public class GestionaBiblioteca {
                     case 6:
                         System.out.print("Buscar: ");
                         Libro l = biblioteca.buscarLibro(scanner.nextLine());
+
                         if (l != null) {
                             l.mostrarInfo();
                         } else {
@@ -72,7 +74,7 @@ public class GestionaBiblioteca {
                         break;
 
                     case 7:
-                        System.out.println("Saliendo...");
+                        System.out.println("Saliendo del programa...");
                         break;
 
                     default:
@@ -82,11 +84,14 @@ public class GestionaBiblioteca {
             } catch (NumberFormatException e) {
                 System.out.println("Entrada inválida. Introduce un número.");
                 opcion = 0;
+
             } catch (BibliotecaException e) {
                 System.out.println("Error: " + e.getMessage());
                 opcion = 0;
             }
 
         } while (opcion != 7);
+
+        scanner.close();
     }
 }

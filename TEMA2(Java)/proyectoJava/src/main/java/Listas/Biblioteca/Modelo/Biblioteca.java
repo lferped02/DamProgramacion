@@ -8,13 +8,15 @@ import java.util.List;
 public class Biblioteca {
     private List<Libro> libros;
     public Biblioteca() {
-        libros = new ArrayList<>();
+        this.libros = new ArrayList<>();
     }
 
+    // Agregar libro
     public void agregarLibro(Libro libro) {
         libros.add(libro);
     }
 
+    // Buscar libro por título o autor
     public Libro buscarLibro(String texto) {
         for (Libro l : libros) {
             if (l.getTitulo().equalsIgnoreCase(texto) ||
@@ -25,32 +27,46 @@ public class Biblioteca {
         return null;
     }
 
+    // Prestar libro
     public void prestarLibro(String texto) throws BibliotecaException {
-        Libro l = buscarLibro(texto);
-        if (l == null) {
+        Libro libroEncontrado = buscarLibro(texto);
+
+        if (libroEncontrado == null) {
             throw new BibliotecaException("El libro no está en el inventario.");
         }
-        l.prestar();
+
+        libroEncontrado.prestar();
     }
 
+    // Devolver libro
     public void devolverLibro(String texto) throws BibliotecaException {
-        Libro l = buscarLibro(texto);
-        if (l == null) {
+        Libro libroEncontrado = buscarLibro(texto);
+
+        if (libroEncontrado == null) {
             throw new BibliotecaException("El libro no está en el inventario.");
         }
-        l.devolver();
+
+        libroEncontrado.devolver();
     }
 
+    // Mostrar todos los libros
     public void mostrarLibros() {
+        if (libros.isEmpty()) {
+            System.out.println("No hay libros en la biblioteca.");
+            return;
+        }
+
         for (Libro l : libros) {
             System.out.println(l);
         }
     }
 
+    // Mostrar detalle de un libro
     public void mostrarDetalle(String texto) {
-        Libro l = buscarLibro(texto);
-        if (l != null) {
-            l.mostrarInfo();
+        Libro libroEncontrado = buscarLibro(texto);
+
+        if (libroEncontrado != null) {
+            libroEncontrado.mostrarInfo();
         } else {
             System.out.println("Libro no encontrado.");
         }
