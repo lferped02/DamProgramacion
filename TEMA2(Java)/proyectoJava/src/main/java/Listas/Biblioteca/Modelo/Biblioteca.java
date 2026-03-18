@@ -7,66 +7,59 @@ import java.util.List;
 
 public class Biblioteca {
     private List<Libro> libros;
+
     public Biblioteca() {
         this.libros = new ArrayList<>();
     }
 
-    // Agregar libro
     public void agregarLibro(Libro libro) {
-        libros.add(libro);
+        if (!libros.contains(libro)) {
+            libros.add(libro);
+            System.out.println("Libro agregado al inventario.");
+        } else {
+            System.out.println("El libro ya existe en la biblioteca.");
+        }
     }
 
-    // Buscar libro por título o autor
     public Libro buscarLibro(String texto) {
         for (Libro l : libros) {
-            if (l.getTitulo().equalsIgnoreCase(texto) ||
-                    l.getAutor().equalsIgnoreCase(texto)) {
+            if (l.getTitulo().equalsIgnoreCase(texto) || l.getAutor().equalsIgnoreCase(texto)) {
                 return l;
             }
         }
         return null;
     }
 
-    // Prestar libro
     public void prestarLibro(String texto) throws BibliotecaException {
-        Libro libroEncontrado = buscarLibro(texto);
-
-        if (libroEncontrado == null) {
+        Libro libro = buscarLibro(texto);
+        if (libro == null) {
             throw new BibliotecaException("El libro no está en el inventario.");
         }
-
-        libroEncontrado.prestar();
+        libro.prestar();
     }
 
-    // Devolver libro
     public void devolverLibro(String texto) throws BibliotecaException {
-        Libro libroEncontrado = buscarLibro(texto);
-
-        if (libroEncontrado == null) {
+        Libro libro = buscarLibro(texto);
+        if (libro == null) {
             throw new BibliotecaException("El libro no está en el inventario.");
         }
-
-        libroEncontrado.devolver();
+        libro.devolver();
     }
 
-    // Mostrar todos los libros
     public void mostrarLibros() {
         if (libros.isEmpty()) {
             System.out.println("No hay libros en la biblioteca.");
             return;
         }
-
         for (Libro l : libros) {
             System.out.println(l);
         }
     }
 
-    // Mostrar detalle de un libro
     public void mostrarDetalle(String texto) {
-        Libro libroEncontrado = buscarLibro(texto);
-
-        if (libroEncontrado != null) {
-            libroEncontrado.mostrarInfo();
+        Libro libro = buscarLibro(texto);
+        if (libro != null) {
+            libro.mostrarInfo();
         } else {
             System.out.println("Libro no encontrado.");
         }
