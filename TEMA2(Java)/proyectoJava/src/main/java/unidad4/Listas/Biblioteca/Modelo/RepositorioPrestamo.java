@@ -2,31 +2,25 @@ package unidad4.Listas.Biblioteca.Modelo;
 
 import unidad4.Listas.Biblioteca.Excepciones.BibliotecaException;
 
+import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class RepositorioPrestamo {
-    private LinkedHashSet<Prestamo> prestamos;
-    private int contadorId;
+    private Set<Prestamo> prestamos;
 
     public RepositorioPrestamo() {
-        prestamos = new LinkedHashSet<>();
-        contadorId = 1;
+        prestamos = new LinkedHashSet<Prestamo>();
     }
 
     public void agregarPrestamo(Libro libro, String usuario) {
-        Prestamo nuevo = new Prestamo(contadorId, libro, usuario);
-
-        if (!prestamos.contains(nuevo)) {
-            try {
-                libro.prestar();
-                prestamos.add(nuevo);
-                contadorId++;
-                System.out.println("Préstamo realizado correctamente.");
-            } catch (BibliotecaException e) {
-                System.out.println("No es posible realizar el préstamo de un libro que ya está prestado.");
-            }
-        } else {
-            System.out.println("El préstamo ya existe.");
+        try {
+            libro.prestar();
+            Prestamo nuevo = new Prestamo(libro, usuario);
+            prestamos.add(nuevo);
+            System.out.println("Préstamo realizado correctamente.");
+        } catch (BibliotecaException e) {
+            System.out.println("No es posible realizar el préstamo de un libro que ya está prestado.");
         }
     }
 
@@ -39,27 +33,40 @@ public class RepositorioPrestamo {
         }
     }
 
+    public Prestamo buscarPrestamo(Libro libro, String usuario) {
+        Prestamo prestamoEncontrado = null;
+
+        Iterator<Prestamo> it = this.prestamos.iterator();
+
+        boolean encontrado = false;
+        while (!encontrado && it.hasNext()) {
+            Prestamo p = it.next();
+            if (p.getNombreUsuario().equals(usuario) && p.getLibro().equals(libro)) {
+                encontrado = true;
+                prestamoEncontrado = p;
+            }
+        }
+        return prestamoEncontrado;
+    }
+
     public void mostrarPrestamos() {
         if (prestamos.isEmpty()) {
             System.out.println("No hay préstamos registrados.");
-            return;
         }
         for (Prestamo p : prestamos) {
             System.out.println(p);
         }
     }
 
-    public void buscarPrestamosPorLibro(String titulo, String autor) {
-        boolean encontrado = false;
+    public Set<Prestamo> buscarPrestamosPorLibro(String titulo, String autor) {
+        Set<Prestamo> prestamoFiltrado = new LinkedHashSet<Prestamo>();
+
         for (Prestamo p : prestamos) {
             if (p.getLibro().getTitulo().equalsIgnoreCase(titulo) &&
                     p.getLibro().getAutor().equalsIgnoreCase(autor)) {
-                System.out.println(p);
-                encontrado = true;
+                prestamoFiltrado.add(p);
             }
         }
-        if (!encontrado) {
-            System.out.println("No hay préstamos para ese libro.");
-        }
+        return prestamoFiltrado;
     }
 }

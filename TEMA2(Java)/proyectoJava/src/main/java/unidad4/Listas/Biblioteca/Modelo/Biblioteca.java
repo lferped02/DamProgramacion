@@ -1,15 +1,16 @@
 package unidad4.Listas.Biblioteca.Modelo;
 
-import unidad4.Listas.Biblioteca.Excepciones.BibliotecaException;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca {
+
     private List<Libro> libros;
+    private RepositorioPrestamo repositorioPrestamo;
 
     public Biblioteca() {
         this.libros = new ArrayList<>();
+        this.repositorioPrestamo = new RepositorioPrestamo();
     }
 
     public void agregarLibro(Libro libro) {
@@ -21,29 +22,15 @@ public class Biblioteca {
         }
     }
 
-    public Libro buscarLibro(String texto) {
+    // 🔥 CORRECTO
+    public Libro buscarLibro(String titulo, String autor) {
         for (Libro l : libros) {
-            if (l.getTitulo().equalsIgnoreCase(texto) || l.getAutor().equalsIgnoreCase(texto)) {
+            if (l.getTitulo().equalsIgnoreCase(titulo) &&
+                    l.getAutor().equalsIgnoreCase(autor)) {
                 return l;
             }
         }
         return null;
-    }
-
-    public void prestarLibro(String texto) throws BibliotecaException {
-        Libro libro = buscarLibro(texto);
-        if (libro == null) {
-            throw new BibliotecaException("El libro no está en el inventario.");
-        }
-        libro.prestar();
-    }
-
-    public void devolverLibro(String texto) throws BibliotecaException {
-        Libro libro = buscarLibro(texto);
-        if (libro == null) {
-            throw new BibliotecaException("El libro no está en el inventario.");
-        }
-        libro.devolver();
     }
 
     public void mostrarLibros() {
@@ -56,12 +43,16 @@ public class Biblioteca {
         }
     }
 
-    public void mostrarDetalle(String texto) {
-        Libro libro = buscarLibro(texto);
+    public void mostrarDetalle(String titulo, String autor) {
+        Libro libro = buscarLibro(titulo, autor);
         if (libro != null) {
             libro.mostrarInfo();
         } else {
             System.out.println("Libro no encontrado.");
         }
+    }
+
+    public RepositorioPrestamo getRepositorioPrestamo() {
+        return repositorioPrestamo;
     }
 }
