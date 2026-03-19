@@ -2,7 +2,7 @@ package unidad4.Ordenaciones.Animales.Modelo;
 
 import java.time.LocalDate;
 
-public class Animal {
+public class Animal implements Comparable<Animal> {
     private int id;
     private String nombre;
     private String especie;
@@ -26,87 +26,49 @@ public class Animal {
     }
 
     public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+        return id; }
 
     public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEspecie() {
-        return especie;
-    }
-
-    public void setEspecie(String especie) {
-        this.especie = especie;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public ClasificacionComida getTipoComida() {
-        return tipoComida;
-    }
-
-    public void setTipoComida(ClasificacionComida tipoComida) {
-        this.tipoComida = tipoComida;
-    }
+        return nombre; }
 
     public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
+        return fechaNacimiento; }
 
     public Medio getMedio() {
-        return medio;
-    }
+        return medio; }
 
-    public void setMedio(Medio medio) {
-        this.medio = medio;
-    }
+    public ClasificacionComida getTipoComida() {
+        return tipoComida; }
 
-    public ClasificacionGestacion getTipoGestacion() {
-        return tipoGestacion;
-    }
-
-    public void setTipoGestacion(ClasificacionGestacion tipoGestacion) {
-        this.tipoGestacion = tipoGestacion;
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
     @Override
     public String toString() {
-        return "ID: " + id +
-                " | Nombre: " + nombre +
-                " | Especie: " + especie +
-                " | Edad: " + edad +
-                " | Comida: " + tipoComida +
+        return "Nombre: " + nombre +
                 " | Nacimiento: " + fechaNacimiento +
-                " | Peso: " + peso +
                 " | Medio: " + medio +
-                " | Gestación: " + tipoGestacion;
+                " | Alimentación: " + tipoComida;
+    }
+
+    // Comparación natural: nombre → id
+    @Override
+    public int compareTo(Animal o) {
+        int comp = this.nombre.compareToIgnoreCase(o.nombre);
+        if (comp == 0) {
+            return Integer.compare(this.id, o.id);
+        }
+        return comp;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Animal)) return false;
+        return this.id == ((Animal) obj).id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 }
