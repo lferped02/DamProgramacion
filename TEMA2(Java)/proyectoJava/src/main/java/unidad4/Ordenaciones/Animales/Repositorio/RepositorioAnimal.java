@@ -2,6 +2,7 @@ package unidad4.Ordenaciones.Animales.Repositorio;
 
 import unidad4.Ordenaciones.Animales.Modelo.Animal;
 
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -18,12 +19,23 @@ public class RepositorioAnimal {
         this.animales = new TreeSet<>();
     }
 
-    public void agregarAnimal(Animal a) {
-        if (animales.add(a)) {
-            System.out.println("Animal añadido: " + a.getNombre());
-        } else {
-            System.out.println("Ya existe un animal con ID: " + a.getId());
+    public boolean agregarAnimal(Animal a) {
+        return this.animales.add(a);
+    }
+
+    public boolean modificarAnimal(Animal a) {
+        boolean modificado = false;
+        Iterator<Animal> it = animales.iterator();
+
+        while (it.hasNext() && !modificado) {
+            Animal actual = it.next();
+
+            if (actual.equals(a)) {
+                actual.setNombre(a.getNombre());
+                modificado = true;
+            }
         }
+        return modificado;
     }
 
     public void modificarAnimal(int id, String nuevoNombre) {
