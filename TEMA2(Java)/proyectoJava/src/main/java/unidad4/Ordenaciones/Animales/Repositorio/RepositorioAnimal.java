@@ -2,60 +2,47 @@ package unidad4.Ordenaciones.Animales.Repositorio;
 
 import unidad4.Ordenaciones.Animales.Modelo.Animal;
 
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class RepositorioAnimal {
     private String nombre;
     private String lugar;
-    private double presupuesto;
-    private Set<Animal> animales;
+    private double presupuestoAnual;
+    private TreeSet<Animal> animales;
 
-    public RepositorioAnimal(String nombre, String lugar, double presupuesto) {
+    public RepositorioAnimal(String nombre, String lugar, double presupuestoAnual) {
         this.nombre = nombre;
         this.lugar = lugar;
-        this.presupuesto = presupuesto;
+        this.presupuestoAnual = presupuestoAnual;
         this.animales = new TreeSet<>();
     }
 
-    public boolean agregarAnimal(Animal a) {
-        return this.animales.add(a);
+    public boolean agregarAnimal(Animal animal) {
+        return animales.add(animal);
     }
 
-    public boolean modificarAnimal(Animal a) {
-        boolean modificado = false;
-        Iterator<Animal> it = animales.iterator();
-
-        while (it.hasNext() && !modificado) {
-            Animal actual = it.next();
-
-            if (actual.equals(a)) {
-                actual.setNombre(a.getNombre());
-                modificado = true;
-            }
-        }
-        return modificado;
-    }
-
-    public void modificarAnimal(int id, String nuevoNombre) {
+    public void modificarNombreAnimal(int id, String nuevoNombre) {
+        Animal encontrado = null;
         for (Animal a : animales) {
             if (a.getId() == id) {
-                a.setNombre(nuevoNombre);
-                System.out.println("Animal modificado: " + nuevoNombre);
-                return;
+                encontrado = a;
+                break;
             }
         }
-        System.out.println("Animal no encontrado.");
-    }
-
-    public Set<Animal> getAnimales() {
-        return animales;
+        if (encontrado != null) {
+            animales.remove(encontrado);
+            encontrado.setNombre(nuevoNombre);
+            animales.add(encontrado);
+        }
     }
 
     public void mostrarAnimales() {
         for (Animal a : animales) {
             System.out.println(a);
         }
+    }
+
+    public Set<Animal> getAnimales() {
+        return new TreeSet<>(animales);
     }
 }

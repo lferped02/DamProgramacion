@@ -15,7 +15,7 @@ public class GestionaHistorial {
     public static void main(String[] args) {
         Historial historial = new Historial();
         Scanner scanner = new Scanner(System.in);
-        int op;
+        int opcion;
 
         try {
             historial.agregarPagina("google.com", LocalDate.now().minusDays(2));
@@ -44,10 +44,10 @@ public class GestionaHistorial {
             System.out.println("6.Ordenar por url");
             System.out.println("7.Salir");
 
-            op = Integer.parseInt(scanner.nextLine());
+            opcion = Integer.parseInt(scanner.nextLine());
 
             try {
-                switch (op) {
+                switch (opcion) {
                     case 1:
                         System.out.print("URL: ");
                         String url = scanner.nextLine();
@@ -56,7 +56,6 @@ public class GestionaHistorial {
                         String f = scanner.nextLine();
 
                         LocalDate fecha = f.isEmpty() ? null : LocalDate.parse(f);
-
                         historial.agregarPagina(url, fecha);
                         break;
 
@@ -102,7 +101,7 @@ public class GestionaHistorial {
             } catch (Exception e) {
                 System.out.println("Dato incorrecto");
             }
-        } while (op != 7);
+        } while (opcion != 7);
 
         scanner.close();
     }

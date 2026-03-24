@@ -1,40 +1,43 @@
 package unidad4.Ordenaciones.Animales.Controlador;
 
 import unidad4.Ordenaciones.Animales.Modelo.Animal;
-import unidad4.Ordenaciones.Animales.Modelo.ClasificacionComida;
-import unidad4.Ordenaciones.Animales.Modelo.ClasificacionGestacion;
-import unidad4.Ordenaciones.Animales.Modelo.Medio;
 import unidad4.Ordenaciones.Animales.Repositorio.RepositorioAnimal;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class GestionaAnimales {
     public static void main(String[] args) {
-        RepositorioAnimal repositorio = new RepositorioAnimal("Zoo Central", "Madrid", 100000);
+        RepositorioAnimal repo = new RepositorioAnimal("Zoo Central", "Ciudad", 50000);
 
-        repositorio.agregarAnimal(new Animal(1, "León", "Felino", 5, ClasificacionComida.CANRIVOROS, LocalDate.of(2018, 5, 10), 190.5, Medio.TIERRA, ClasificacionGestacion.VIVIPAROS));
-        repositorio.agregarAnimal(new Animal(2, "Águila", "Ave", 3, ClasificacionComida.CANRIVOROS, LocalDate.of(2020, 3, 15), 6.2, Medio.AIRE, ClasificacionGestacion.OVIPAROS));
-        repositorio.agregarAnimal(new Animal(3, "Vaca", "Mamífero", 6, ClasificacionComida.HERVIBOROS, LocalDate.of(2017, 8, 20), 500, Medio.TIERRA, ClasificacionGestacion.VIVIPAROS));
+        repo.agregarAnimal(new Animal(1, "Leon", "Panthera leo", 5, "Carnívoro", LocalDate.of(2018, 3, 5), 190, "tierra", "vivíparo"));
+        repo.agregarAnimal(new Animal(2, "Aguila", "Aquila chrysaetos", 3, "Carnívoro", LocalDate.of(2020, 6, 12), 6, "aire", "vivíparo"));
+        repo.agregarAnimal(new Animal(3, "Delfin", "Delphinus delphis", 8, "Carnívoro", LocalDate.of(2015, 8, 20), 150, "agua", "vivíparo"));
 
-        System.out.println("\n--- Animales Orden Natural (nombre → id) ---");
-        repositorio.mostrarAnimales();
 
-        repositorio.modificarAnimal(2, "Águila Real");
-        System.out.println("\n--- Animales Después de Modificación ---");
-        repositorio.mostrarAnimales();
+        System.out.println("=== Animales Ordenados por Nombre (1.1) ===");
+        repo.mostrarAnimales();
 
-        List<Animal> lista1 = new ArrayList<>(repositorio.getAnimales());lista1.sort(Comparator.comparing(Animal::getNombre).thenComparing(Animal::getFechaNacimiento));
-        System.out.println("\n--- Ordenados por Nombre y Fecha de Nacimiento ---");
-        for (Animal a : lista1) {
+        repo.modificarNombreAnimal(3, "Ballena");
+        System.out.println("\n=== Animales después de modificar nombre (1.1) ===");
+        repo.mostrarAnimales();
+
+
+        List<Animal> listaPorNombreYFecha = new ArrayList<>(repo.getAnimales());
+        listaPorNombreYFecha.sort(Comparator.comparing(Animal::getNombre)
+                .thenComparing(Animal::getFechaNacimiento));
+
+        System.out.println("\n=== Animales Ordenados por Nombre y Fecha de Nacimiento (1.2) ===");
+        for (Animal a : listaPorNombreYFecha) {
             System.out.println(a);
         }
 
-        List<Animal> lista2 = new ArrayList<>(repositorio.getAnimales());lista2.sort(Comparator.comparing(Animal::getMedio).thenComparing(Animal::getNombre));
-        System.out.println("\n--- Ordenados por Medio y Nombre ---");
-        for (Animal a : lista2) {
+        List<Animal> listaPorMedioYNombre = new ArrayList<>(repo.getAnimales());
+        listaPorMedioYNombre.sort(Comparator.comparing(Animal::getMedio)
+                .thenComparing(Animal::getNombre));
+
+        System.out.println("\n=== Animales Ordenados por Medio y Nombre (1.3) ===");
+        for (Animal a : listaPorMedioYNombre) {
             System.out.println(a);
         }
     }
