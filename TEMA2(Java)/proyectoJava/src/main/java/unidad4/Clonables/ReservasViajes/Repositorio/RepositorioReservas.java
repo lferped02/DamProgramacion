@@ -6,7 +6,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class RepositorioReservas {
-
     private Set<Reserva> reservas = new LinkedHashSet<>();
 
     public void anadirReserva(Reserva r) {
