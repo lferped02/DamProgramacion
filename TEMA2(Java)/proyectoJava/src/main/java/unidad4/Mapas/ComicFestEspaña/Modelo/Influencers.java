@@ -20,12 +20,36 @@ public class Influencers {
         this.plataforma = plataforma;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getNick() {
         return nick;
     }
 
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
+    public int getNumeroSeguidores() {
+        return numeroSeguidores;
+    }
+
+    public void setNumeroSeguidores(int numeroSeguidores) {
+        this.numeroSeguidores = numeroSeguidores;
+    }
+
     public String getPlataforma() {
         return plataforma;
+    }
+
+    public void setPlataforma(String plataforma) {
+        this.plataforma = plataforma;
     }
 
     @Override

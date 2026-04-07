@@ -1,30 +1,65 @@
 package unidad4.Mapas.ComicFestEspaña.Repositorio;
 
 import unidad4.Mapas.ComicFestEspaña.Enums.EstadoEntrada;
-import unidad4.Mapas.ComicFestEspaña.Enums.TipoEntrada;
 import unidad4.Mapas.ComicFestEspaña.Modelo.EntradaVip;
 import unidad4.Mapas.ComicFestEspaña.Modelo.Influencers;
 
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class RegistroEntradas {
-    private Map<Influencers, EntradaVip> entradas = new HashMap<>();
 
-    public void agregarEntradas(Influencers i, String codigo, LocalDate fecha, TipoEntrada t) {
-        if (!entradas.containsKey(i)) {
-            EntradaVip nueva = new EntradaVip(codigo, fecha, t, EstadoEntrada.ENVIADA);
-            entradas.put(i, nueva);
-            System.out.println("Entrada asignada a " + i.getNick());
+    private Map<Influencers, EntradaVip> registro = new HashMap<>();
 
+    // Añadir entrada
+    public void anadirEntrada(Influencers i, EntradaVip entrada) {
+        if (registro.containsKey(i)) {
+            System.out.println("El influencer ya tiene entrada.");
         } else {
-            System.out.println("ERROR: el influencer ya tiene entrada.");
+            registro.put(i, entrada);
         }
     }
 
-    public EntradaVip buscarEntradas(String nick, String plataforma) {
-        Influencers i = new Influencers(nick, plataforma);
-        return entradas.get(i);
+    // Buscar entrada
+    public EntradaVip buscarEntrada(String nick, String plataforma) {
+        for (Influencers i : registro.keySet()) {
+            if (i.getNick().equals(nick) && i.getPlataforma().equals(plataforma)) {
+                return registro.get(i);
+            }
+        }
+        return null;
+    }
+
+    // Confirmar
+    public void confirmar(String nick, String plataforma) {
+        EntradaVip e = buscarEntrada(nick, plataforma);
+        if (e != null) e.confirmar();
+    }
+
+    // Cancelar
+    public void cancelar(String nick, String plataforma) {
+        EntradaVip e = buscarEntrada(nick, plataforma);
+        if (e != null) e.cancelar();
+    }
+
+    // Listados
+    public void listarPorEstado(EstadoEntrada estado) {
+        for (Map.Entry<Influencers, EntradaVip> entry : registro.entrySet()) {
+            if (entry.getValue().getEstado() == estado) {
+                System.out.println(entry.getKey());
+            }
+        }
+    }
+
+    // Pendientes
+    public void listarPendientes() {
+        listarPorEstado(EstadoEntrada.ENVIADA);
+    }
+
+    // Top 3 influencers
+    public void top3Influencers() {
+        registro.entrySet().stream()
+                .sorted((a, b) -> b.getKey().getNumeroSeguidores() - a.getKey().getNumeroSeguidores())
+                .limit(3)
+                .forEach(e -> System.out.println(e.getKey() + " -> " + e.getValue().getTipo()));
     }
 }
